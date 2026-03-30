@@ -2,8 +2,8 @@ import json
 import os
 from typing import List, Dict
 from langchain_chroma import Chroma
-from langchain_openai import OpenAIEmbeddings
-from langchain_openai import ChatOpenAI
+from langchain_ollama import OllamaEmbeddings
+from langchain_ollama import OllamaLLM
 import logging
 
 
@@ -14,22 +14,30 @@ class RAGService:
 
         # Standardize the base URL to use the robust OpenAI-compatible `/v1` endpoint
         # Example: https://ollama.com -> https://ollama.com/v1
-        ollama_api_key = os.getenv("OLLAMA_API_KEY", "").replace("Bearer ", "").strip()
         safe_base_url = ollama_base_url.rstrip('/')
-        if not safe_base_url.endswith('/v1'):
-            if safe_base_url.endswith('/api'):
-                safe_base_url = safe_base_url[:-4]
-            safe_base_url = f"{safe_base_url}/v1"
-
-        self.embeddings = OpenAIEmbeddings(
-            openai_api_base=safe_base_url,
-            openai_api_key=ollama_api_key or "sk-placeholder",
-            model="all-minilm"
+        if safe_base_url.endswith('/api'):
+            safe_base_url = safe_base_url[:-4]
+            
+        ollama_api_key = os.getenv("OLLAMA_API_KEY", "").replace("Bearer ", "").strip()
+        headers = {"Authorization": f"Bearer {ollama_api_key}"} if ollama_api_key else None
+        
+        logging.warning("=== DIAGNOSTIC BOOT SEQUENCE ===")
+        logging.warning(f"Using Target Ollama URL: {safe_base_url}")
+        if ollama_api_key:
+            logging.warning(f"Found API Key of length: {len(ollama_api_key)}. Injecting Authorization Headers.")
+        else:
+            logging.error("CRITICAL: OLLAMA_API_KEY is empty or missing! 401 Unauthorized guaranteed.")
+            
+        self.embeddings = OllamaEmbeddings(
+            base_url=safe_base_url, 
+            model="all-minilm",
+            client_kwargs={"headers": headers} if headers else {}
         )
-        self.llm = ChatOpenAI(
-            openai_api_base=safe_base_url,
-            openai_api_key=ollama_api_key or "sk-placeholder",
-            model=model_name
+        self.db_dir = db_dir
+        self.llm = OllamaLLM(
+            base_url=safe_base_url, 
+            model=model_name,
+            client_kwargs={"headers": headers} if headers else {}
         )
         self.vector_store = None
         self.initialize_vector_store()
