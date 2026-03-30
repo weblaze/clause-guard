@@ -16,13 +16,13 @@ class RAGService:
         self.embeddings = OllamaEmbeddings(
             base_url=ollama_base_url, 
             model="all-minilm",
-            headers=headers
+            client_kwargs={"headers": headers} if headers else {}
         )
         self.db_dir = db_dir
         self.llm = OllamaLLM(
             base_url=ollama_base_url, 
             model=model_name,
-            headers=headers
+            client_kwargs={"headers": headers} if headers else {}
         )
         self.vector_store = None
         self.initialize_vector_store()
