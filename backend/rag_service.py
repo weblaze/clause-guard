@@ -2,8 +2,9 @@ import json
 import os
 from typing import List, Dict
 from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import OllamaEmbeddings
-from langchain_community.llms import Ollama
+from langchain_ollama import OllamaEmbeddings
+from langchain_ollama import OllamaLLM
+import logging
 
 
 class RAGService:
@@ -18,7 +19,7 @@ class RAGService:
             headers=headers
         )
         self.db_dir = db_dir
-        self.llm = Ollama(
+        self.llm = OllamaLLM(
             base_url=ollama_base_url, 
             model=model_name,
             headers=headers
@@ -39,7 +40,10 @@ class RAGService:
         if os.path.exists(kb_path):
             with open(kb_path, "r") as f:
                 kb_data = json.load(f)
-                self.add_statutes_to_db(kb_data)
+                try:
+                    self.add_statutes_to_db(kb_data)
+                except Exception as e:
+                    logging.error(f"Failed to embed initial knowledge base. Is your Ollama server running? Error: {e}")
 
     def add_statutes_to_db(self, statutes: List[Dict]):
         """Add legal statutes to the vector store with metadata."""

@@ -14,3 +14,4 @@ langchain-openai
 supabase
 python-magic
 langchain-community
+langchain-ollama
