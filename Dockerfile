@@ -11,7 +11,7 @@ ENV PYTHONPATH .
 RUN apt-get update && apt-get install -y \
     tesseract-ocr \
     libtesseract-dev \
-    libgl1-mesa-glx \
+    libgl1 \
     libglvnd0 \
     && rm -rf /var/lib/apt/lists/*
 
