@@ -4,9 +4,7 @@ from typing import List, Dict
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.llms import Ollama
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.chains import RetrievalQA
-from langchain.prompts import PromptTemplate
+
 
 class RAGService:
     def __init__(self, db_dir: str = "chroma_db", model_name: str = "llama3"):
