@@ -1,2 +1,14 @@
+[variables]
+    NIXPACKS_PIP_INSTALL_CMD = "python3 -m pip install -r requirements.txt"
+
 [phases.setup]
-nixPkgs = ["python310", "tesseract", "libglvnd"]
+nixPkgs = ["python310", "python310Packages.pip", "tesseract", "libglvnd"]
+
+[phases.install]
+cmds = [
+    "python3 -m pip install --upgrade pip",
+    "python3 -m pip install -r requirements.txt"
+]
+
+[start]
+cmd = "PYTHONPATH=. python3 -m uvicorn backend.main:app --host 0.0.0.0 --port $PORT"
