@@ -75,7 +75,6 @@ class RAGService:
         ]
         
         self.vector_store.add_texts(texts=texts, metadatas=metadatas)
-        self.vector_store.persist()
 
     def analyze_clause(self, clause_text: str, jurisdiction: str = "Central") -> Dict:
         """Analyze a specific lease clause using RAG + Ollama."""
