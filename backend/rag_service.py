@@ -2,9 +2,9 @@ import json
 import os
 from typing import List, Dict
 from langchain_chroma import Chroma
-from langchain_ollama import OllamaEmbeddings
 from langchain_ollama import OllamaLLM
 import logging
+import requests
 
 
 class RAGService:
@@ -28,10 +28,32 @@ class RAGService:
         else:
             logging.error("CRITICAL: OLLAMA_API_KEY is empty or missing! 401 Unauthorized guaranteed.")
             
-        self.embeddings = OllamaEmbeddings(
-            base_url=safe_base_url, 
-            model="all-minilm",
-            client_kwargs={"headers": headers} if headers else {}
+        class CustomOllamaEmbeddings:
+            def __init__(self, base_url, api_key, model):
+                self.base_url = base_url
+                self.api_key = api_key
+                self.model = model
+
+            def embed_documents(self, texts: List[str]) -> List[List[float]]:
+                url = f"{self.base_url}/api/embed"
+                headers = {"Authorization": f"Bearer {self.api_key}"} if self.api_key else {}
+                resp = requests.post(url, headers=headers, json={"model": self.model, "input": texts})
+                if resp.status_code != 200:
+                    raise Exception(f"Embeddings Failed: HTTP {resp.status_code} - {resp.text}")
+                return resp.json().get("embeddings", [])
+
+            def embed_query(self, text: str) -> List[float]:
+                url = f"{self.base_url}/api/embed"
+                headers = {"Authorization": f"Bearer {self.api_key}"} if self.api_key else {}
+                resp = requests.post(url, headers=headers, json={"model": self.model, "input": text})
+                if resp.status_code != 200:
+                    raise Exception(f"Embed Query Failed: HTTP {resp.status_code} - {resp.text}")
+                return resp.json().get("embeddings", [[[]]])[0]
+                
+        self.embeddings = CustomOllamaEmbeddings(
+            base_url=safe_base_url,
+            api_key=ollama_api_key,
+            model="all-minilm"
         )
         self.db_dir = db_dir
         self.llm = OllamaLLM(
