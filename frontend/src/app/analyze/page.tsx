@@ -27,7 +27,12 @@ export default function AnalyzePage() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
+      const selectedFile = e.target.files[0];
+      if (selectedFile.type !== 'application/pdf' && !selectedFile.name.toLowerCase().endsWith('.pdf')) {
+        alert("SECURITY RESTRICTION: The analysis engine only supports raw .pdf files. Please convert your document to PDF.");
+        return;
+      }
+      setFile(selectedFile);
     }
   };
 
@@ -83,10 +88,10 @@ export default function AnalyzePage() {
       setReport(liveReport);
       setAnalyzing(false);
 
-    } catch (error) {
+    } catch (error: any) {
       console.error("Analysis Failed:", error);
       setAnalyzing(false);
-      setProgress('Error: Cloud analysis failed (Verify Supabase Bucket exists).');
+      setProgress(`Analysis Failed: ${error.message || 'Server Unreachable'}`);
     }
   };
 
