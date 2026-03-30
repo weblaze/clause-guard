@@ -51,58 +51,37 @@ export default function AnalyzePage() {
 
       setProgress('Triggering AI Analysis (Vercel Edge Engine)...');
 
-      // MOCK BEHAVIOR FOR PROTOTYPE (Supabase Logic Simulation)
-      setTimeout(async () => {
-        const mockReport = {
-          risk_score: 84,
-          risk_category: 'CRITICAL',
+      // Wire directly to Railway Backend
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://clause-guard-backend.up.railway.app'; // Fallback
+      
+      const response = await fetch(`${backendUrl}/api/v1/analyze-url?jurisdiction=${jurisdiction}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ file_url: publicUrl }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Railway Backend Error: ${response.statusText}`);
+      }
+      
+      const result = await response.json();
+      
+      const liveReport = {
+          risk_score: result.risk_score,
+          risk_category: result.risk_category,
           filename: file.name,
-          clauses: [
-            {
-              title: "Security Deposit Cap",
-              original_text: "The tenant shall provide a security deposit equivalent to 10 months' rent (INR 1,50,000).",
-              classification: 'ILLEGAL',
-              explanation: "Security deposits are capped at two months' rent under the Model Tenancy Act.",
-              statute: "Section 11, MTA 2021",
-              action: "Request reduction to 2 months rent."
-            }
-          ]
-        };
+          clauses: result.clauses.map((c: any, index: number) => ({
+             title: `Segment ${index + 1}`,
+             original_text: c.original_text,
+             classification: c.classification,
+             explanation: c.explanation,
+             statute: c.statute_cited || 'N/A',
+             action: c.classification === 'ILLEGAL' ? 'Consult Legal/Renegotiate' : c.classification === 'UNFAIR' ? 'Request Modification' : 'Standard'
+          }))
+      };
 
-        // 2. Save Report to Supabase Database
-        const { data: reportData, error: reportError } = await supabase
-          .from('reports')
-          .insert([
-            {
-              user_id: user.id,
-              filename: file.name,
-              risk_score: mockReport.risk_score,
-              risk_category: mockReport.risk_category,
-              jurisdiction: jurisdiction,
-              file_url: publicUrl
-            }
-          ])
-          .select();
-
-        if (reportError) throw reportError;
-
-        // 3. Save granular clauses
-        const reportId = reportData[0].id;
-        const clausesToInsert = mockReport.clauses.map(c => ({
-          report_id: reportId,
-          ...c,
-          remedy: c.action // mapping action to remedy
-        }));
-
-        const { error: clausesError } = await supabase
-          .from('clauses')
-          .insert(clausesToInsert);
-
-        if (clausesError) throw clausesError;
-
-        setReport(mockReport);
-        setAnalyzing(false);
-      }, 4000);
+      setReport(liveReport);
+      setAnalyzing(false);
 
     } catch (error) {
       console.error("Analysis Failed:", error);
