@@ -26,9 +26,12 @@ All notable changes to the **Clause-Guard** project will be documented in this f
   - Initialized `firebase.ts` with the configuration for project `clause-guard-cf894`.
   - Configured `firebase.json` for Next.js Web App deployment.
   - Implemented `firestore.rules` and `storage.rules` for cloud-native security.
-  - Installed Firebase SDK in Northern Frontend.
-  - Targeted Firebase project `clause-guard-cf894` for standard deployment.
-  - Successfully committed all previous development progress to the `arunav` branch.
+  - Targeted Firebase project `clause-guard-cf894` for Cloud native deployment.
+  - Successfully committed all previous development progress for Phase 1/2 to the `arunav` branch.
+  - Initialized backend Dockerization for Google Cloud Run (Linked to Firebase).
+- **Version Control (Persistent Execution)**:
+  - Implemented automatic Phase-based Git staging and committing as instructed.
+  - Updated `.gitignore` for standard cloud/Next.js efficiency.
 
 ### Things To Do next session
 - Complete frontend framework initialization.
