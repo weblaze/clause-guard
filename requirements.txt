@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+python-multipart
+requests
+pdfplumber
+pytesseract
+openai
+chromadb
+pydantic
+python-dotenv
+tiktoken
+langchain
+langchain-openai
+supabase
+python-magic
