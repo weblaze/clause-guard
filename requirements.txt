@@ -13,3 +13,5 @@ langchain
 langchain-openai
 supabase
 python-magic
+langchain-community
+sentence-transformers
