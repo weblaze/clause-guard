@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: clause-guard-backend
+    env: docker
+    plan: free
+    region: ohio
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: TESSERACT_PATH
+        value: /usr/bin/tesseract
+    autoDeploy: true

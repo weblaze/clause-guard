@@ -2,14 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { auth, storage, db } from '@/lib/firebase';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { onAuthStateChanged, User } from 'firebase/auth';
+import { supabase } from '@/lib/supabase';
 import { Upload, FileText, CheckCircle, AlertTriangle, ShieldCheck, ArrowLeft, Download, Loader2, Gauge, Scale } from 'lucide-react';
 
 export default function AnalyzePage() {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<any>(null);
   const [file, setFile] = useState<File | null>(null);
   const [jurisdiction, setJurisdiction] = useState('Central');
   const [analyzing, setAnalyzing] = useState(false);
@@ -17,10 +14,15 @@ export default function AnalyzePage() {
   const [report, setReport] = useState<any>(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
     });
-    return () => unsubscribe();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,55 +34,71 @@ export default function AnalyzePage() {
   const startAnalysis = async () => {
     if (!file || !user) return;
     setAnalyzing(true);
-    setProgress('Uploading document to Cloud Storage...');
+    setProgress('Uploading document to Supabase Cloud...');
 
     try {
-      const storageRef = ref(storage, `uploads/${user.uid}/${Date.now()}_${file.name}`);
-      const uploadResult = await uploadBytes(storageRef, file);
-      const fileUrl = await getDownloadURL(uploadResult.ref);
+      // 1. Upload to Supabase Storage
+      const filePath = `uploads/${user.id}/${Date.now()}_${file.name}`;
+      const { data: uploadData, error: uploadError } = await supabase.storage
+        .from('agreements')
+        .upload(filePath, file);
 
-      setProgress('Triggering AI Analysis (RAG + Ollama Engine)...');
+      if (uploadError) throw uploadError;
 
-      // MOCK BEHAVIOR FOR PROTOTYPE (Cloud Logic Simulation)
+      const { data: { publicUrl } } = supabase.storage
+        .from('agreements')
+        .getPublicUrl(filePath);
+
+      setProgress('Triggering AI Analysis (Vercel Edge Engine)...');
+
+      // MOCK BEHAVIOR FOR PROTOTYPE (Supabase Logic Simulation)
       setTimeout(async () => {
         const mockReport = {
           risk_score: 84,
           risk_category: 'CRITICAL',
           filename: file.name,
-          date: new Date().toLocaleDateString(),
           clauses: [
             {
               title: "Security Deposit Cap",
-              original_text: "The tenant shall provide a security deposit equivalent to 10 months' rent (INR 1,50,000) at the time of signing.",
+              original_text: "The tenant shall provide a security deposit equivalent to 10 months' rent (INR 1,50,000).",
               classification: 'ILLEGAL',
-              explanation: "Security deposits for residential premises are strictly capped at two months' rent under the Model Tenancy Act.",
-              statute: "Section 11, Model Tenancy Act 2021",
+              explanation: "Security deposits are capped at two months' rent under the Model Tenancy Act.",
+              statute: "Section 11, MTA 2021",
               action: "Request reduction to 2 months rent."
-            },
-            {
-              title: "Maintenance Liability",
-              original_text: "All structural repairs, including roof leakage and wall dampness, shall be the sole responsibility of the tenant.",
-              classification: 'UNFAIR',
-              explanation: "Landlords are legally obligated to maintain the structural health of the building. Shifting this entirely to the tenant is predatory.",
-              statute: "Section 15(1), Model Tenancy Act 2021",
-              action: "Add clause for 50/50 maintenance or Landlord liability for structural issues."
-            },
-            {
-              title: "Notice Period",
-              original_text: "Either party may terminate this agreement by giving 1 month notice.",
-              classification: 'FAIR',
-              explanation: "Standard notice period aligned with common practice and statutory guidelines for leave and license agreements.",
-              statute: "General Tenancy Protections",
-              action: "None required."
             }
           ]
         };
 
-        await addDoc(collection(db, 'reports'), {
-          ...mockReport,
-          userId: user.uid,
-          createdAt: serverTimestamp()
-        });
+        // 2. Save Report to Supabase Database
+        const { data: reportData, error: reportError } = await supabase
+          .from('reports')
+          .insert([
+            {
+              user_id: user.id,
+              filename: file.name,
+              risk_score: mockReport.risk_score,
+              risk_category: mockReport.risk_category,
+              jurisdiction: jurisdiction,
+              file_url: publicUrl
+            }
+          ])
+          .select();
+
+        if (reportError) throw reportError;
+
+        // 3. Save granular clauses
+        const reportId = reportData[0].id;
+        const clausesToInsert = mockReport.clauses.map(c => ({
+          report_id: reportId,
+          ...c,
+          remedy: c.action // mapping action to remedy
+        }));
+
+        const { error: clausesError } = await supabase
+          .from('clauses')
+          .insert(clausesToInsert);
+
+        if (clausesError) throw clausesError;
 
         setReport(mockReport);
         setAnalyzing(false);
@@ -89,7 +107,7 @@ export default function AnalyzePage() {
     } catch (error) {
       console.error("Analysis Failed:", error);
       setAnalyzing(false);
-      setProgress('Error: Could not complete cloud analysis.');
+      setProgress('Error: Cloud analysis failed (Verify Supabase Bucket exists).');
     }
   };
 

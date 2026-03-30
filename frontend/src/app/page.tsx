@@ -2,26 +2,38 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { auth } from '@/lib/firebase';
-import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut, User } from 'firebase/auth';
-import { Shield, FileSearch, Scale, Zap, Globe, Lock, ArrowRight, Gavel } from 'lucide-react';
+import { supabase } from '@/lib/supabase';
+import { Shield, FileSearch, Scale, Zap, Lock, ArrowRight, Gavel } from 'lucide-react';
 
 export default function Home() {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
       setLoading(false);
     });
-    return () => unsubscribe();
+
+    // Listen for changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   const loginWithGoogle = async () => {
-    const provider = new GoogleAuthProvider();
     try {
-      await signInWithPopup(auth, provider);
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: window.location.origin,
+        }
+      });
+      if (error) throw error;
     } catch (error) {
       console.error("Error signing in with Google:", error);
     }
@@ -29,7 +41,7 @@ export default function Home() {
 
   const logout = async () => {
     try {
-      await signOut(auth);
+      await supabase.auth.signOut();
     } catch (error) {
       console.error("Error signing out:", error);
     }
@@ -59,8 +71,8 @@ export default function Home() {
             ) : user ? (
               <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
                 <div style={{ textAlign: 'right' }}>
-                  <p style={{ fontSize: '0.85rem', fontWeight: '600' }}>{user.displayName}</p>
-                  <button onClick={logout} style={{ fontSize: '0.7rem', color: '#ef4444', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>Termince Session</button>
+                  <p style={{ fontSize: '0.85rem', fontWeight: '600' }}>{user.user_metadata?.full_name || user.email}</p>
+                  <button onClick={logout} style={{ fontSize: '0.7rem', color: '#ef4444', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>Terminate Session</button>
                 </div>
                 <Link href="/analyze" className="btn-primary" style={{ textDecoration: 'none', padding: '0.6rem 1.5rem' }}>Dashboard</Link>
               </div>
@@ -103,7 +115,7 @@ export default function Home() {
             {[
               { icon: <Gavel />, title: 'Statutory Grounding', desc: 'Every analysis maps directly to the Model Tenancy Act 2021 and regional statutes.' },
               { icon: <FileSearch />, title: 'RAG Architecture', desc: 'Secure retrieval-augmented generation ensures precise clause classification.' },
-              { icon: <Lock />, title: 'Cloud Encrypted', desc: 'Documents are processed in secure Firebase ephemeral containers and immediately purged.' }
+              { icon: <Lock />, title: 'Cloud Encrypted', desc: 'Documents are processed in secure ephemeral environments and immediately purged.' }
             ].map((feature, i) => (
               <div key={i} className="glass" style={{ padding: '3rem 2.5rem', borderRadius: '32px', textAlign: 'center', transition: 'transform 0.3s' }}>
                 <div className="flex-center" style={{ width: '60px', height: '60px', marginInline: 'auto', marginBottom: '2rem', borderRadius: '16px', background: 'rgba(255,255,255,0.02)', color: 'var(--accent-gold)' }}>
@@ -119,7 +131,7 @@ export default function Home() {
 
       <footer style={{ padding: '4rem 0', borderTop: '1px solid var(--border-glass)', textAlign: 'center' }}>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-          &copy; 2026 Clause-Guard. Legal-Grade Cloud Deployment Powered by Firebase & Google Cloud Run.
+          &copy; 2026 Clause-Guard. Legal-Grade Cloud Deployment Powered by Vercel & Supabase.
         </p>
       </footer>
     </main>
