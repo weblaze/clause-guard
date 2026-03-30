@@ -2,27 +2,34 @@ import json
 import os
 from typing import List, Dict
 from langchain_chroma import Chroma
-from langchain_ollama import OllamaEmbeddings
-from langchain_ollama import OllamaLLM
+from langchain_openai import OpenAIEmbeddings
+from langchain_openai import ChatOpenAI
 import logging
 
 
 class RAGService:
     def __init__(self, db_dir: str = "chroma_db", model_name: str = "llama3"):
         ollama_base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-        ollama_api_key = os.getenv("OLLAMA_API_KEY")
-        headers = {"Authorization": f"Bearer {ollama_api_key}"} if ollama_api_key else None
-        
-        self.embeddings = OllamaEmbeddings(
-            base_url=ollama_base_url, 
-            model="all-minilm",
-            client_kwargs={"headers": headers} if headers else {}
-        )
         self.db_dir = db_dir
-        self.llm = OllamaLLM(
-            base_url=ollama_base_url, 
-            model=model_name,
-            client_kwargs={"headers": headers} if headers else {}
+
+        # Standardize the base URL to use the robust OpenAI-compatible `/v1` endpoint
+        # Example: https://ollama.com -> https://ollama.com/v1
+        ollama_api_key = os.getenv("OLLAMA_API_KEY", "").replace("Bearer ", "").strip()
+        safe_base_url = ollama_base_url.rstrip('/')
+        if not safe_base_url.endswith('/v1'):
+            if safe_base_url.endswith('/api'):
+                safe_base_url = safe_base_url[:-4]
+            safe_base_url = f"{safe_base_url}/v1"
+
+        self.embeddings = OpenAIEmbeddings(
+            openai_api_base=safe_base_url,
+            openai_api_key=ollama_api_key or "sk-placeholder",
+            model="all-minilm"
+        )
+        self.llm = ChatOpenAI(
+            openai_api_base=safe_base_url,
+            openai_api_key=ollama_api_key or "sk-placeholder",
+            model=model_name
         )
         self.vector_store = None
         self.initialize_vector_store()
