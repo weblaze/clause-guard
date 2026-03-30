@@ -66,7 +66,12 @@ export default function AnalyzePage() {
       });
 
       if (!response.ok) {
-        throw new Error(`Railway Backend Error: ${response.statusText}`);
+        let errorDetail = 'Unknown Error';
+        try {
+          const errData = await response.json();
+          errorDetail = errData.detail || JSON.stringify(errData);
+        } catch(e) {}
+        throw new Error(errorDetail);
       }
       
       const result = await response.json();
