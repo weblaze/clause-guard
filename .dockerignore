@@ -1,0 +1,17 @@
+.git
+.gitignore
+backend/venv
+venv
+env
+.env
+.env.local
+node_modules
+frontend/
+__pycache__
+*.pyc
+.next
+.vercel
+chroma_db
+uploads/
+*.pdf
+*.md
