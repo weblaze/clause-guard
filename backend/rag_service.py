@@ -2,7 +2,7 @@ import json
 import os
 from typing import List, Dict
 from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.llms import Ollama
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains import RetrievalQA
@@ -10,9 +10,21 @@ from langchain.prompts import PromptTemplate
 
 class RAGService:
     def __init__(self, db_dir: str = "chroma_db", model_name: str = "llama3"):
-        self.embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+        ollama_base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+        ollama_api_key = os.getenv("OLLAMA_API_KEY")
+        headers = {"Authorization": f"Bearer {ollama_api_key}"} if ollama_api_key else None
+        
+        self.embeddings = OllamaEmbeddings(
+            base_url=ollama_base_url, 
+            model="all-minilm",
+            headers=headers
+        )
         self.db_dir = db_dir
-        self.llm = Ollama(model=model_name)
+        self.llm = Ollama(
+            base_url=ollama_base_url, 
+            model=model_name,
+            headers=headers
+        )
         self.vector_store = None
         self.initialize_vector_store()
 
