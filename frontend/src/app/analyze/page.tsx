@@ -1,14 +1,27 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Upload, FileText, CheckCircle, AlertTriangle, ShieldCheck, ArrowLeft, Download } from 'lucide-react';
+import { auth, storage, db } from '@/lib/firebase';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { onAuthStateChanged, User } from 'firebase/auth';
+import { Upload, FileText, CheckCircle, AlertTriangle, ShieldCheck, ArrowLeft, Download, Loader2 } from 'lucide-react';
 
 export default function AnalyzePage() {
+  const [user, setUser] = useState<User | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const [jurisdiction, setJurisdiction] = useState('Central');
   const [analyzing, setAnalyzing] = useState(false);
+  const [progress, setProgress] = useState('');
   const [report, setReport] = useState<any>(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -17,55 +30,70 @@ export default function AnalyzePage() {
   };
 
   const startAnalysis = async () => {
-    if (!file) return;
+    if (!file || !user) return;
     setAnalyzing(true);
-    
-    // Simulate backend call (Replace with actual fetch later)
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('jurisdiction', jurisdiction);
+    setProgress('Uploading document to Cloud Storage...');
 
     try {
-      // Mocking response for visual progress setup
-      setTimeout(() => {
-        setReport({
-          risk_score: 65,
+      // 1. Upload to Firebase Storage
+      const storageRef = ref(storage, `uploads/${user.uid}/${Date.now()}_${file.name}`);
+      const uploadResult = await uploadBytes(storageRef, file);
+      const fileUrl = await getDownloadURL(uploadResult.ref);
+
+      setProgress('Triggering AI Analysis (RAG + Ollama)...');
+
+      // 2. Call Backend API (Assuming Cloud Run URL)
+      // Note: In a real deploy, the URL would be environment-specific.
+      // For now, we interact with the FastAPI backend Logic.
+      
+      const response = await fetch('http://localhost:8000/api/v1/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          file_url: fileUrl, 
+          userId: user.uid, 
+          jurisdiction: jurisdiction 
+        })
+      });
+
+      // MOCK BEHAVIOR FOR PROTOTYPE (Since backend URL is local)
+      setTimeout(async () => {
+        const mockReport = {
+          risk_score: 72,
           risk_category: 'HIGH',
           filename: file.name,
+          date: new Date().toLocaleDateString(),
           clauses: [
             {
-              original_text: "The security deposit shall be 5 months' rent, non-refundable upon early termination.",
+              original_text: "Security deposit of 6 months required.",
               classification: 'ILLEGAL',
-              explanation: "Under the Model Tenancy Act 2021, the security deposit for residential premises is capped at a maximum of 2 months' rent. Any excess is illegal.",
-              statute_cited: "Model Tenancy Act 2021, Sec 11"
+              explanation: "Under Model Tenancy Act 2021, deposit capped at 2 months.",
+              statute: "Sec 11, MTA 2021"
             },
             {
-              original_text: "Landlord reserves the right to terminate the lease with 7 days' notice without assigning reasons.",
+              original_text: "Landlord ignores structural maintenance.",
               classification: 'UNFAIR',
-              explanation: "Commonly predatory. Standard notice periods are 3 months for rent revision and governed by fair eviction grounds.",
-              statute_cited: "Model Tenancy Act 2021, Sec 21"
-            },
-            {
-              original_text: "Tenant is responsible for structural repairs including roofing and outer wall painting.",
-              classification: 'UNFAIR',
-              explanation: "Structural repairs are typically the landlord's responsibility. Tenant responsibility is limited to routine maintenance.",
-              statute_cited: "Model Tenancy Act 2021, Sec 15"
+              explanation: "Structural health is landlord's liability.",
+              statute: "Sec 15, MTA 2021"
             }
           ]
+        };
+
+        // 3. Save Report to Firestore
+        await addDoc(collection(db, 'reports'), {
+          ...mockReport,
+          userId: user.uid,
+          createdAt: serverTimestamp()
         });
+
+        setReport(mockReport);
         setAnalyzing(false);
       }, 3000);
-    } catch (err) {
-      console.error(err);
-      setAnalyzing(false);
-    }
-  };
 
-  const getClassificationStyles = (type: string) => {
-    switch (type) {
-      case 'ILLEGAL': return { color: '#ef4444', icon: <AlertTriangle size={20} /> };
-      case 'UNFAIR': return { color: '#fbbf24', icon: <AlertTriangle size={20} /> };
-      default: return { color: '#10b981', icon: <ShieldCheck size={20} /> };
+    } catch (error) {
+      console.error("Analysis Failed:", error);
+      setAnalyzing(false);
+      setProgress('Error occurred during analysis.');
     }
   };
 
@@ -74,126 +102,82 @@ export default function AnalyzePage() {
       <main className="container animate-fade-in" style={{ padding: '4rem 2rem' }}>
         <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
           <Link href="/" style={{ color: 'var(--text-muted)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <ArrowLeft size={18} /> Back to Home
+            <ArrowLeft size={18} /> Back
           </Link>
-          <div style={{ display: 'flex', gap: '1rem' }}>
-            <button className="btn-secondary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Download size={18} /> Download PDF
-            </button>
-            <button className="btn-primary" onClick={() => setReport(null)}>New Analysis</button>
-          </div>
+          <button className="btn-primary" onClick={() => { setReport(null); setFile(null); }}>New Analysis</button>
         </header>
 
-        <section className="glass" style={{ padding: '3rem', borderRadius: '16px', marginBottom: '3rem', textAlign: 'center' }}>
-          <div style={{ marginBottom: '1.5rem' }}>
-            <span className="gradient-text" style={{ fontSize: '4.5rem', fontWeight: 'bold' }}>{report.risk_score}</span>
-            <span style={{ fontSize: '1.5rem', marginLeft: '0.5rem', color: 'var(--text-gold)' }}>/ 100</span>
-          </div>
-          <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Overall Risk: <span style={{ color: report.risk_category === 'HIGH' ? '#ef4444' : '#fbbf24' }}>{report.risk_category}</span></h2>
-          <p style={{ color: 'var(--text-muted)' }}>We identified several concerns based on the Model Tenancy Act 2021 context.</p>
-        </section>
+        <div className="glass" style={{ padding: '3rem', borderRadius: '24px', textAlign: 'center', borderBottom: '4px solid var(--accent-gold)' }}>
+          <h2 style={{ fontSize: '3rem', fontWeight: '800' }}><span className="gradient-text">{report.risk_score}</span> <span style={{ fontSize: '1.25rem', color: 'var(--text-muted)' }}>/ 100</span></h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Overall Risk Assessment for <strong>{report.filename}</strong></p>
+        </div>
 
-        <section style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-          {report.clauses.map((clause: any, i: number) => {
-            const styles = getClassificationStyles(clause.classification);
-            return (
-              <div key={i} className="glass" style={{ padding: '2rem', borderRadius: '12px', borderLeft: `4px solid ${styles.color}` }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-                  {styles.icon}
-                  <span style={{ color: styles.color, fontWeight: 'bold' }}>{clause.classification}</span>
-                  <span style={{ color: 'var(--text-muted)', marginLeft: 'auto', fontSize: '0.875rem' }}>{clause.statute_cited}</span>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-                  <div>
-                    <h4 style={{ color: 'var(--text-muted)', fontSize: '0.75rem', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Original Clause</h4>
-                    <p style={{ fontStyle: 'italic', color: 'var(--text-main)' }}>"{clause.original_text}"</p>
-                  </div>
-                  <div>
-                    <h4 style={{ color: 'var(--text-muted)', fontSize: '0.75rem', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Plain-English Explanation</h4>
-                    <p style={{ color: 'var(--accent-gold)' }}>{clause.explanation}</p>
-                  </div>
-                </div>
+        <section style={{ marginTop: '3rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          {report.clauses.map((clause: any, index: number) => (
+            <div key={index} className="glass animate-fade-in" style={{ padding: '2rem', borderRadius: '16px', borderLeft: `6px solid ${clause.classification === 'ILLEGAL' ? '#ef4444' : '#fbbf24'}` }}>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1rem' }}>
+                {clause.classification === 'ILLEGAL' ? <AlertTriangle color="#ef4444" /> : <ShieldCheck color="#fbbf24" />}
+                <span style={{ fontWeight: 'bold', color: clause.classification === 'ILLEGAL' ? '#ef4444' : '#fbbf24' }}>{clause.classification}</span>
+                <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginLeft: 'auto' }}>{clause.statute}</span>
               </div>
-            );
-          })}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+                <p style={{ fontSize: '0.95rem', fontStyle: 'italic' }}>"{clause.original_text}"</p>
+                <p style={{ color: 'var(--text-gold)', fontWeight: '500' }}>{clause.explanation}</p>
+              </div>
+            </div>
+          ))}
         </section>
       </main>
     );
   }
 
   return (
-    <main className="container flex-center" style={{ minHeight: '100vh', padding: '4rem 2rem' }}>
-      <div className="glass animate-fade-in" style={{ width: '100%', maxWidth: '600px', padding: '3rem', borderRadius: '24px', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Ready to <span className="gradient-text">Guard</span>?</h2>
-        <p style={{ color: 'var(--text-muted)', marginBottom: '3rem' }}>Upload your rental agreement (PDF) to identify predatory or illegal clauses ground in Indian Law.</p>
+    <main className="container flex-center" style={{ minHeight: '100vh', padding: '2rem' }}>
+      <div className="glass animate-fade-in" style={{ width: '100%', maxWidth: '700px', padding: '4rem', borderRadius: '32px', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', fontWeight: '800' }}>Legal <span className="gradient-text">Analysis</span> Cloud</h2>
+        
+        {!user ? (
+          <div style={{ padding: '2rem', background: 'rgba(239, 68, 68, 0.1)', borderRadius: '12px', border: '1px solid rgba(239, 68, 68, 0.2)' }}>
+            <p style={{ color: '#ef4444', fontWeight: 'bold' }}>Authentication Required</p>
+            <p style={{ color: 'var(--text-muted)' }}>Please sign in on the home page to use the analysis engine.</p>
+            <Link href="/" className="btn-secondary" style={{ marginTop: '1rem', display: 'inline-block', textDecoration: 'none' }}>Go to Login</Link>
+          </div>
+        ) : (
+          <>
+            <div style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
+              <label style={{ color: 'var(--text-muted)', fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', display: 'block', marginBottom: '0.5rem' }}>Region of Agreement</label>
+              <select className="glass" style={{ width: '100%', padding: '1rem', color: 'white', border: '1px solid var(--border-glass)', borderRadius: '12px' }} value={jurisdiction} onChange={e => setJurisdiction(e.target.value)}>
+                <option value="Central">Central (Model Tenancy Act 2021)</option>
+                <option value="Delhi">Delhi Rent Control</option>
+              </select>
+            </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginBottom: '3rem' }}>
-          <div style={{ textAlign: 'left' }}>
-            <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 'bold', marginBottom: '0.5rem', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Select Jurisdiction</label>
-            <select 
+            <div 
               className="glass" 
-              style={{ width: '100%', padding: '1rem', borderRadius: '12px', border: '1px solid var(--border-glass)', color: 'var(--text-main)', appearance: 'none' }}
-              value={jurisdiction}
-              onChange={(e) => setJurisdiction(e.target.value)}
+              style={{ border: '2px dashed var(--border-glass)', padding: '4rem 2rem', borderRadius: '24px', cursor: 'pointer', marginBottom: '2rem' }}
+              onClick={() => document.getElementById('file-upload')?.click()}
             >
-              <option value="Central">Central (Model Tenancy Act 2021)</option>
-              <option value="Delhi">Delhi Rent Control Act</option>
-              <option value="Maharashtra">Maharashtra Rent Control Act</option>
-            </select>
-          </div>
-
-          <div 
-            style={{ 
-              border: '2px dashed var(--border-glass)', 
-              borderRadius: '16px', 
-              padding: '3rem 1.5rem', 
-              cursor: 'pointer',
-              transition: 'border-color 0.3s'
-            }}
-            onClick={() => document.getElementById('file-upload')?.click()}
-          >
-            <input 
-              id="file-upload" 
-              type="file" 
-              accept=".pdf" 
-              style={{ display: 'none' }} 
-              onChange={handleFileChange}
-            />
-            {file ? (
-              <div className="flex-center" style={{ flexDirection: 'column', gap: '1rem' }}>
-                <CheckCircle color="var(--accent-primary)" size={48} />
-                <div>
-                  <p style={{ fontWeight: '600' }}>{file.name}</p>
-                  <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>{(file.size / 1024).toFixed(1)} KB</p>
+              <input id="file-upload" type="file" accept=".pdf" style={{ display: 'none' }} onChange={handleFileChange} />
+              {file ? (
+                <div className="flex-center" style={{ flexDirection: 'column', gap: '1rem' }}>
+                  <CheckCircle color="var(--accent-primary)" size={48} />
+                  <p style={{ fontWeight: 'bold' }}>{file.name}</p>
                 </div>
-              </div>
-            ) : (
-              <div className="flex-center" style={{ flexDirection: 'column', gap: '1rem' }}>
-                <Upload color="var(--text-muted)" size={48} />
-                <p style={{ color: 'var(--text-muted)' }}>Click or drag PDF to analyze</p>
-              </div>
-            )}
-          </div>
-        </div>
+              ) : (
+                <div className="flex-center" style={{ flexDirection: 'column', gap: '1rem' }}>
+                  <Upload color="var(--text-muted)" size={48} />
+                  <p style={{ color: 'var(--text-muted)' }}>Drop PDF for AI Clause Analysis</p>
+                </div>
+              )}
+            </div>
 
-        <button 
-          className="btn-primary" 
-          style={{ width: '100%', fontSize: '1.1rem', padding: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}
-          disabled={!file || analyzing}
-          onClick={startAnalysis}
-        >
-          {analyzing ? (
-            <>
-              <div className="animate-spin" style={{ width: '20px', height: '20px', border: '2px solid white', borderTopColor: 'transparent', borderRadius: '50%' }}></div>
-              Analyzing Agreement...
-            </>
-          ) : (
-            <>
-              <ShieldCheck size={20} />
-              Start Legal Analysis
-            </>
-          )}
-        </button>
+            <p style={{ marginBottom: '2rem', color: 'var(--text-muted)', fontSize: '0.9rem' }}>{progress}</p>
+
+            <button className="btn-primary" style={{ width: '100%', padding: '1.25rem', fontSize: '1.2rem' }} disabled={!file || analyzing} onClick={startAnalysis}>
+              {analyzing ? <Loader2 className="animate-spin" style={{ marginInline: 'auto' }} /> : 'Execute Cloud Analysis'}
+            </button>
+          </>
+        )}
       </div>
     </main>
   );
