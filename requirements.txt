@@ -16,3 +16,4 @@ python-magic
 langchain-community
 langchain-ollama
 langchain-chroma
+fastembed

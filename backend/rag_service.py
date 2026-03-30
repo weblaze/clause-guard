@@ -2,14 +2,15 @@ import json
 import os
 from typing import List, Dict
 from langchain_chroma import Chroma
+from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 from langchain_ollama import OllamaLLM
 import logging
-import requests
 
 
 class RAGService:
-    def __init__(self, db_dir: str = "chroma_db", model_name: str = "llama3"):
+    def __init__(self, db_dir: str = "chroma_db"):
         ollama_base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+        model_name = os.getenv("OLLAMA_MODEL", "gemma3")
         self.db_dir = db_dir
 
         # Standardize the base URL to use the robust OpenAI-compatible `/v1` endpoint
@@ -23,38 +24,16 @@ class RAGService:
         
         logging.warning("=== DIAGNOSTIC BOOT SEQUENCE ===")
         logging.warning(f"Using Target Ollama URL: {safe_base_url}")
+        logging.warning(f"Targeting Generative Core: {model_name}")
         if ollama_api_key:
             logging.warning(f"Found API Key of length: {len(ollama_api_key)}. Injecting Authorization Headers.")
         else:
-            logging.error("CRITICAL: OLLAMA_API_KEY is empty or missing! 401 Unauthorized guaranteed.")
+            logging.warning("No API Key detected. Assuming unauthenticated proxy connection.")
             
-        class CustomOllamaEmbeddings:
-            def __init__(self, base_url, api_key, model):
-                self.base_url = base_url
-                self.api_key = api_key
-                self.model = model
-
-            def embed_documents(self, texts: List[str]) -> List[List[float]]:
-                url = f"{self.base_url}/api/embed"
-                headers = {"Authorization": f"Bearer {self.api_key}"} if self.api_key else {}
-                resp = requests.post(url, headers=headers, json={"model": self.model, "input": texts})
-                if resp.status_code != 200:
-                    raise Exception(f"Embeddings Failed: HTTP {resp.status_code} - {resp.text}")
-                return resp.json().get("embeddings", [])
-
-            def embed_query(self, text: str) -> List[float]:
-                url = f"{self.base_url}/api/embed"
-                headers = {"Authorization": f"Bearer {self.api_key}"} if self.api_key else {}
-                resp = requests.post(url, headers=headers, json={"model": self.model, "input": text})
-                if resp.status_code != 200:
-                    raise Exception(f"Embed Query Failed: HTTP {resp.status_code} - {resp.text}")
-                return resp.json().get("embeddings", [[[]]])[0]
-                
-        self.embeddings = CustomOllamaEmbeddings(
-            base_url=safe_base_url,
-            api_key=ollama_api_key,
-            model="all-minilm"
-        )
+        # 1. Use Local FastEmbed for vectors (Bypasses Cloud 401 Auth restrictions entirely)
+        self.embeddings = FastEmbedEmbeddings(model_name="BAAI/bge-small-en-v1.5")
+        
+        # 2. Use Cloud Ollama exclusively for generation
         self.db_dir = db_dir
         self.llm = OllamaLLM(
             base_url=safe_base_url, 
