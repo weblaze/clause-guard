@@ -66,10 +66,16 @@ export default function AnalyzePage() {
       });
 
       if (!response.ok) {
-        let errorDetail = 'Unknown Error';
+        let errorDetail = `Backend Error (HTTP ${response.status}): Could not reach ${backendUrl}`;
         try {
-          const errData = await response.json();
-          errorDetail = errData.detail || JSON.stringify(errData);
+          const text = await response.text();
+          try {
+            const errData = JSON.parse(text);
+            errorDetail = errData.detail || errData.message || JSON.stringify(errData);
+          } catch (e) {
+            // It returned HTML instead of JSON. Railway server is probably a 404 or Gateway Timeout!
+            errorDetail = `HTTP ${response.status} from ${backendUrl} (Are your env variables set?)`;
+          }
         } catch(e) {}
         throw new Error(errorDetail);
       }

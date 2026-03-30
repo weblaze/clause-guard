@@ -1,7 +1,7 @@
 import json
 import os
 from typing import List, Dict
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings
 from langchain_ollama import OllamaLLM
 import logging
