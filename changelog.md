@@ -38,3 +38,17 @@ All notable changes to the **Clause-Guard** project will be documented in this f
 - Implement the "Rich Aesthetic" Design System in CSS.
 - Integrate the Backend RAG pipeline with actual Ollama inference.
 - Develop the "Results Dashboard" UI component.
+
+## [Session 2] - 2026-03-31
+*Deployment Infrastructure and Backend Fixes*
+
+### Completed
+- **Dependencies Configuration**:
+  - Resolved `ModuleNotFoundError: No module named 'langchain_community'` by adding missing requirements (`langchain-community`) to `requirements.txt`.
+- **Backend Deployment**:
+  - Replaced cloud provider embeddings with local **FastEmbed** to bypass provider restrictions on Railway.
+  - Mapped generative AI core (**Gemma 3**) to communicate correctly with the remote Ollama API.
+- **Frontend Connectivity**:
+  - Corrected frontend Next.js environment variables to ensure successful end-to-end communication with the Railway backend for legal document analysis.
+- **Branch Strategy & CI/CD**:
+  - Migrated deployment tracking to the `master` branch for both Vercel and Railway.

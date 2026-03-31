@@ -24,7 +24,7 @@ Tenants frequently sign exploitative lease agreements due to a lack of legal kno
 
 ### Backend
 - **Framework**: FastAPI (Python)
-- **AI/ML**: LangChain, Ollama (Llama 3 / Mistral), SentenceTransformers
+- **AI/ML**: LangChain, Ollama (Gemma 3), FastEmbed
 - **Vector Database**: ChromaDB
 - **OCR**: Tesseract OCR
 - **PDF Processing**: pdfplumber
@@ -57,7 +57,7 @@ clause-guard/
 
 ## 🌿 Branching Strategy
 
-- `master`: Stable production-ready code.
+- `master`: Stable production-ready code (Tracked by Vercel and Railway for deployments).
 - `arunav`: Main development branch for Arunav.
 - `srishti`: Collaboration branch for Srishti.
 

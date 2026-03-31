@@ -11,6 +11,7 @@ Vercel will host your Next.js application and connect automatically to your GitH
 3.  **Project Settings**:
     *   **Root Directory**: Set this to `frontend`.
     *   **Framework Preset**: Keep as `Next.js`.
+    *   **Production Branch**: Ensure this is set to `master`.
 4.  **Environment Variables**: Add the following (get these from your Supabase Dashboard):
     *   `NEXT_PUBLIC_SUPABASE_URL`
     *   `NEXT_PUBLIC_SUPABASE_ANON_KEY`
@@ -26,6 +27,7 @@ Railway will host your FastAPI backend using the deterministic Docker configurat
 2.  **Connect GitHub**: Select your `clause-guard` repository.
 3.  **Service Settings**:
     *   **Root Directory**: Keep this as `/` (the project root).
+    *   **Deployment Branch**: Ensure Railway is watching the `master` branch.
     *   **Railway will automatically find the root `Dockerfile`**.
 4.  **Environment Variables**:
     *   `PORT`: `8000` (Railway usually maps this automatically, but set it to be sure).
