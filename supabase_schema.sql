@@ -1,6 +1,7 @@
 -- Enable Row Level Security
 ALTER TABLE IF EXISTS public.profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE IF EXISTS public.reports ENABLE ROW LEVEL SECURITY;
+ALTER TABLE IF EXISTS public.clauses ENABLE ROW LEVEL SECURITY;
 
 -- 1. Profiles Table (Extending Auth.users)
 CREATE TABLE IF NOT EXISTS public.profiles (
@@ -44,6 +45,14 @@ CREATE POLICY "Users can insert their own reports" ON public.reports
 
 CREATE POLICY "Users can view clauses of their own reports" ON public.clauses
   FOR SELECT USING (
+    EXISTS (
+      SELECT 1 FROM public.reports 
+      WHERE id = public.clauses.report_id AND user_id = auth.uid()
+    )
+  );
+
+CREATE POLICY "Users can insert clauses of their own reports" ON public.clauses
+  FOR INSERT WITH CHECK (
     EXISTS (
       SELECT 1 FROM public.reports 
       WHERE id = public.clauses.report_id AND user_id = auth.uid()

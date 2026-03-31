@@ -12,11 +12,27 @@ class OCRService:
         pytesseract.pytesseract.tesseract_cmd = self.tesseract_cmd
 
     def extract_text_from_url(self, file_url: str) -> str:
-        """Fetch PDF from public URL and extract text, falling back to OCR if needed."""
+        """Fetch PDF from public URL and extract text, falling back to OCR if needed. SSRF Protected."""
+        # SSRF Protection: Enforce deterministic Supabase storage URLs
+        if not file_url.startswith("https://") or ".supabase.co/storage/v1/object/public/agreements/" not in file_url:
+            raise Exception("Security Check Failed: Invalid or unauthorized file URL source.")
+
         try:
-            response = requests.get(file_url)
+            # Memory exhaustion protection: stream and enforce 10MB limit
+            response = requests.get(file_url, stream=True, timeout=10)
             response.raise_for_status()
-            pdf_data = io.BytesIO(response.content)
+            
+            content_length = response.headers.get('content-length')
+            if content_length and int(content_length) > 10 * 1024 * 1024:
+                raise Exception("Security Check Failed: File size exceeds the 10MB maximum limit.")
+
+            pdf_content = bytearray()
+            for chunk in response.iter_content(chunk_size=8192):
+                pdf_content.extend(chunk)
+                if len(pdf_content) > 10 * 1024 * 1024:
+                    raise Exception("Security Check Failed: File size exceeds the 10MB maximum limit during streaming.")
+            
+            pdf_data = io.BytesIO(pdf_content)
             
             full_text = ""
             with pdfplumber.open(pdf_data) as pdf:

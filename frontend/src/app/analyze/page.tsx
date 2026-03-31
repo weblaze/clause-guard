@@ -18,8 +18,11 @@ export default function AnalyzePage() {
       setUser(session?.user ?? null);
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       setUser(session?.user ?? null);
+      if (event === 'SIGNED_IN' || window.location.hash.includes('access_token')) {
+        window.history.replaceState(null, '', window.location.pathname);
+      }
     });
 
     return () => subscription.unsubscribe();
@@ -59,9 +62,20 @@ export default function AnalyzePage() {
       // Wire directly to Railway Backend
       const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://clause-guard-backend.up.railway.app'; // Fallback
       
+      // Get active session token to authorize the backend call
+      const { data: { session } } = await supabase.auth.getSession();
+      const token = session?.access_token;
+      
+      if (!token) {
+        throw new Error("Security Check Failed: Active login session required to process documents.");
+      }
+
       const response = await fetch(`${backendUrl}/api/v1/analyze-url?jurisdiction=${jurisdiction}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify({ file_url: publicUrl }),
       });
 

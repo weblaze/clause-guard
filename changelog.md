@@ -52,3 +52,13 @@ All notable changes to the **Clause-Guard** project will be documented in this f
   - Corrected frontend Next.js environment variables to ensure successful end-to-end communication with the Railway backend for legal document analysis.
 - **Branch Strategy & CI/CD**:
   - Migrated deployment tracking to the `master` branch for both Vercel and Railway.
+
+## Outstanding Features (Gap Analysis against ClauseGuard Final Report)
+*The following system features are outlined in the Final Report but currently remain pending or partially implemented:*
+
+### Pending Functional Requirements
+- **Regex-based Structured Data Extraction (UC04)**: The system currently relies fully on the semantic RAG pipeline. The report specifies a parallel data extraction branch using regex to pull precise terms like rent, dates, and deposit values.
+- **Export Analysis as PDF Report (UC08)**: The functionality allowing a user to download their parsed interactive risk report as a static PDF file is absent.
+- **Dynamic Jurisdiction Selection (UC02)**: The knowledge base is securely initialized with the *Indian Model Tenancy Act 2021*, but the dynamic UI selection allowing users to pick a Country/State and load targeted statutes is still needed.
+- **Admin Panel / Knowledge Base Management (UC12)**: There is currently no dedicated web interface or secure admin route to seamlessly add, edit, or delete legal statutes directly into the ChromaDB vector database.
+- **Email Registration Verification Flow (UC09)**: While Firebase mapping is established, the explicit backend verification process (requiring email tokens before confirming Registered User status) has yet to be fully integrated as specified in the Sequence Diagrams.

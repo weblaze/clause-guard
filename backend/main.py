@@ -1,9 +1,31 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException, Body
+from fastapi import FastAPI, UploadFile, File, HTTPException, Body, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from jose import jwt, JWTError
 import os
 import uuid
 import uvicorn
 from typing import List, Optional
+
+security = HTTPBearer()
+
+def verify_supabase_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    token = credentials.credentials
+    jwt_secret = os.environ.get("SUPABASE_JWT_SECRET")
+
+    if not jwt_secret:
+        raise HTTPException(status_code=500, detail="Server misconfiguration: SUPABASE_JWT_SECRET missing.")
+
+    try:
+        payload = jwt.decode(
+            token,
+            jwt_secret,
+            algorithms=["HS256"],
+            options={"verify_aud": False}
+        )
+        return payload
+    except JWTError as e:
+        raise HTTPException(status_code=401, detail="Invalid or expired authentication token.")
 
 from backend.ocr_service import OCRService
 from backend.rag_service import RAGService
@@ -30,8 +52,8 @@ async def health():
     return {"status": "healthy", "engine": "Railway Cloud"}
 
 @app.post("/api/v1/analyze")
-async def analyze_document(file: UploadFile = File(...), jurisdiction: str = "Central"):
-    """Legacy local upload support."""
+async def analyze_document(file: UploadFile = File(...), jurisdiction: str = "Central", _: dict = Depends(verify_supabase_token)):
+    """Legacy local upload support securely enforced."""
     if not file.filename.endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Only PDF files are supported")
     
@@ -40,7 +62,8 @@ async def analyze_document(file: UploadFile = File(...), jurisdiction: str = "Ce
     if not os.path.exists(upload_dir):
         os.makedirs(upload_dir)
     
-    file_path = os.path.join(upload_dir, f"{session_id}_{file.filename}")
+    # Security: Use deterministic ID for file path to prevent Path Traversal
+    file_path = os.path.join(upload_dir, f"{session_id}.pdf")
     with open(file_path, "wb") as buffer:
         buffer.write(await file.read())
     
@@ -51,8 +74,8 @@ async def analyze_document(file: UploadFile = File(...), jurisdiction: str = "Ce
         raise HTTPException(status_code=500, detail=f"Analysis failed: {str(e)}")
 
 @app.post("/api/v1/analyze-url")
-async def analyze_url(file_url: str = Body(..., embed=True), jurisdiction: str = "Central"):
-    """Cloud-native Supabase integration."""
+async def analyze_url(file_url: str = Body(..., embed=True), jurisdiction: str = "Central", _: dict = Depends(verify_supabase_token)):
+    """Cloud-native Supabase integration securely enforced."""
     session_id = str(uuid.uuid4())
     try:
         raw_text = ocr_service.extract_text_from_url(file_url)
