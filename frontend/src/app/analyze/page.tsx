@@ -1,32 +1,15 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { supabase } from '@/lib/supabase';
 import { Upload, FileText, CheckCircle, AlertTriangle, ShieldCheck, ArrowLeft, Download, Loader2, Gauge, Scale } from 'lucide-react';
 
 export default function AnalyzePage() {
-  const [user, setUser] = useState<any>(null);
   const [file, setFile] = useState<File | null>(null);
   const [jurisdiction, setJurisdiction] = useState('Central');
   const [analyzing, setAnalyzing] = useState(false);
   const [progress, setProgress] = useState('');
   const [report, setReport] = useState<any>(null);
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-    });
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      setUser(session?.user ?? null);
-      if (event === 'SIGNED_IN' || window.location.hash.includes('access_token')) {
-        window.history.replaceState(null, '', window.location.pathname);
-      }
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -40,43 +23,21 @@ export default function AnalyzePage() {
   };
 
   const startAnalysis = async () => {
-    if (!file || !user) return;
+    if (!file) return;
     setAnalyzing(true);
-    setProgress('Uploading document to Supabase Cloud...');
+    setProgress('Uploading document...');
 
     try {
-      // 1. Upload to Supabase Storage
-      const filePath = `uploads/${user.id}/${Date.now()}_${file.name}`;
-      const { data: uploadData, error: uploadError } = await supabase.storage
-        .from('agreements')
-        .upload(filePath, file);
-
-      if (uploadError) throw uploadError;
-
-      const { data: { publicUrl } } = supabase.storage
-        .from('agreements')
-        .getPublicUrl(filePath);
-
-      setProgress('Triggering AI Analysis (Vercel Edge Engine)...');
-
-      // Wire directly to Railway Backend
       const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://clause-guard-backend.up.railway.app'; // Fallback
-      
-      // Get active session token to authorize the backend call
-      const { data: { session } } = await supabase.auth.getSession();
-      const token = session?.access_token;
-      
-      if (!token) {
-        throw new Error("Security Check Failed: Active login session required to process documents.");
-      }
 
-      const response = await fetch(`${backendUrl}/api/v1/analyze-url?jurisdiction=${jurisdiction}`, {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      setProgress('Running AI Analysis...');
+
+      const response = await fetch(`${backendUrl}/api/v1/analyze?jurisdiction=${jurisdiction}`, {
         method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({ file_url: publicUrl }),
+        body: formData,
       });
 
       if (!response.ok) {
@@ -88,7 +49,7 @@ export default function AnalyzePage() {
             errorDetail = errData.detail || errData.message || JSON.stringify(errData);
           } catch (e) {
             // It returned HTML instead of JSON. Railway server is probably a 404 or Gateway Timeout!
-            errorDetail = `HTTP ${response.status} from ${backendUrl} (Are your env variables set?)`;
+            errorDetail = `HTTP ${response.status} from ${backendUrl} (Is the backend running?)`;
           }
         } catch(e) {}
         throw new Error(errorDetail);
@@ -254,56 +215,48 @@ export default function AnalyzePage() {
           Upload your rental agreement PDF for a high-fidelity audit grounded in the Model Tenancy Act 2021.
         </p>
         
-        {!user ? (
-          <div style={{ padding: '2.5rem', background: 'rgba(239, 68, 68, 0.05)', borderRadius: '24px', border: '1px solid rgba(239, 68, 68, 0.1)' }}>
-            <p style={{ color: '#ef4444', fontWeight: 'bold', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Cloud Access Restricted</p>
-            <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem' }}>Secure cloud analysis requires an active legal session.</p>
-            <Link href="/" className="btn-primary" style={{ textDecoration: 'none', padding: '0.8rem 2rem' }}>Return to Login</Link>
+        <div style={{ maxWidth: '500px', marginInline: 'auto' }}>
+          <div style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
+            <label style={{ color: 'var(--text-muted)', fontSize: '0.7rem', fontWeight: '800', textTransform: 'uppercase', display: 'block', marginBottom: '0.75rem', letterSpacing: '0.05em' }}>Deployment Jurisdiction</label>
+            <select className="glass" style={{ width: '100%', padding: '1.25rem', color: 'white', border: '1px solid var(--border-glass)', borderRadius: '16px', appearance: 'none', cursor: 'pointer' }} value={jurisdiction} onChange={e => setJurisdiction(e.target.value)}>
+              <option value="Central">India Central (MTA 2021)</option>
+              <option value="Delhi">Delhi Rent Act (Special)</option>
+              <option value="Maharashtra">Maharashtra Rent Control</option>
+            </select>
           </div>
-        ) : (
-          <div style={{ maxWidth: '500px', marginInline: 'auto' }}>
-            <div style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
-              <label style={{ color: 'var(--text-muted)', fontSize: '0.7rem', fontWeight: '800', textTransform: 'uppercase', display: 'block', marginBottom: '0.75rem', letterSpacing: '0.05em' }}>Deployment Jurisdiction</label>
-              <select className="glass" style={{ width: '100%', padding: '1.25rem', color: 'white', border: '1px solid var(--border-glass)', borderRadius: '16px', appearance: 'none', cursor: 'pointer' }} value={jurisdiction} onChange={e => setJurisdiction(e.target.value)}>
-                <option value="Central">India Central (MTA 2021)</option>
-                <option value="Delhi">Delhi Rent Act (Special)</option>
-                <option value="Maharashtra">Maharashtra Rent Control</option>
-              </select>
-            </div>
 
-            <div 
-              className="glass" 
-              style={{ border: '2px dashed var(--border-glass)', padding: '5rem 2rem', borderRadius: '32px', cursor: 'pointer', marginBottom: '2.5rem', transition: 'all 0.3s ease' }}
-              onMouseOver={e => e.currentTarget.style.borderColor = 'var(--accent-primary)'}
-              onMouseOut={e => e.currentTarget.style.borderColor = 'var(--border-glass)'}
-              onClick={() => document.getElementById('file-upload')?.click()}
-            >
-              <input id="file-upload" type="file" accept=".pdf" style={{ display: 'none' }} onChange={handleFileChange} />
-              {file ? (
-                <div className="flex-center" style={{ flexDirection: 'column', gap: '1.25rem' }}>
-                  <div style={{ padding: '1rem', borderRadius: '50%', background: 'rgba(16, 185, 129, 0.1)' }}>
-                    <CheckCircle color="var(--accent-primary)" size={40} />
-                  </div>
-                  <p style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>{file.name}</p>
-                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Ready for processing</p>
+          <div
+            className="glass"
+            style={{ border: '2px dashed var(--border-glass)', padding: '5rem 2rem', borderRadius: '32px', cursor: 'pointer', marginBottom: '2.5rem', transition: 'all 0.3s ease' }}
+            onMouseOver={e => e.currentTarget.style.borderColor = 'var(--accent-primary)'}
+            onMouseOut={e => e.currentTarget.style.borderColor = 'var(--border-glass)'}
+            onClick={() => document.getElementById('file-upload')?.click()}
+          >
+            <input id="file-upload" type="file" accept=".pdf" style={{ display: 'none' }} onChange={handleFileChange} />
+            {file ? (
+              <div className="flex-center" style={{ flexDirection: 'column', gap: '1.25rem' }}>
+                <div style={{ padding: '1rem', borderRadius: '50%', background: 'rgba(16, 185, 129, 0.1)' }}>
+                  <CheckCircle color="var(--accent-primary)" size={40} />
                 </div>
-              ) : (
-                <div className="flex-center" style={{ flexDirection: 'column', gap: '1.25rem' }}>
-                  <Upload color="var(--text-muted)" size={40} />
-                  <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Drop Document or Click to Upload</p>
-                  <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.2)' }}>Supports PDF up to 10MB</p>
-                </div>
-              )}
-            </div>
-
-            <p style={{ marginBottom: '2rem', color: 'var(--accent-gold)', fontWeight: 'bold', fontSize: '0.85rem' }}>{progress}</p>
-
-            <button className="btn-primary" style={{ width: '100%', padding: '1.4rem', fontSize: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }} disabled={!file || analyzing} onClick={startAnalysis}>
-              {analyzing ? <Loader2 className="animate-spin" /> : <Gauge size={24} />}
-              {analyzing ? 'Processing Cloud Engine...' : 'Run Legal Audit'}
-            </button>
+                <p style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>{file.name}</p>
+                <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Ready for processing</p>
+              </div>
+            ) : (
+              <div className="flex-center" style={{ flexDirection: 'column', gap: '1.25rem' }}>
+                <Upload color="var(--text-muted)" size={40} />
+                <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Drop Document or Click to Upload</p>
+                <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.2)' }}>Supports PDF up to 10MB</p>
+              </div>
+            )}
           </div>
-        )}
+
+          <p style={{ marginBottom: '2rem', color: 'var(--accent-gold)', fontWeight: 'bold', fontSize: '0.85rem' }}>{progress}</p>
+
+          <button className="btn-primary" style={{ width: '100%', padding: '1.4rem', fontSize: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }} disabled={!file || analyzing} onClick={startAnalysis}>
+            {analyzing ? <Loader2 className="animate-spin" /> : <Gauge size={24} />}
+            {analyzing ? 'Processing Cloud Engine...' : 'Run Legal Audit'}
+          </button>
+        </div>
       </div>
     </main>
   );

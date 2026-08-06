@@ -12,9 +12,8 @@ Vercel will host your Next.js application and connect automatically to your GitH
     *   **Root Directory**: Set this to `frontend`.
     *   **Framework Preset**: Keep as `Next.js`.
     *   **Production Branch**: Ensure this is set to `master`.
-4.  **Environment Variables**: Add the following (get these from your Supabase Dashboard):
-    *   `NEXT_PUBLIC_SUPABASE_URL`
-    *   `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+4.  **Environment Variables**: Add the following once your Railway backend is live (see Section 2):
+    *   `NEXT_PUBLIC_BACKEND_URL`: Your Railway backend URL.
 5.  **Deploy**: Click **"Deploy"**. Future pushes to GitHub will now auto-update this site.
 
 ---
@@ -40,11 +39,6 @@ Railway will host your FastAPI backend using the deterministic Docker configurat
 
 Once both services are live:
 1.  **Link Services**: Copy your Railway **Production URL** (e.g., `https://xxxx.up.railway.app`).
-2.  **Frontend Update**: In your Vercel Dashboard, add a new environment variable:
-    *   `NEXT_PUBLIC_API_URL`: [Your Railway Production URL]
-3.  **Final Test**: Open the Vercel site, login via Google, and upload a PDF.
-
----
-
-> [!TIP]
-> **Database & Storage**: Since you are using Supabase, ensure your **RLS (Row Level Security)** policies allow authenticated users to upload and read from the `agreements` storage bucket and `reports` table.
+2.  **Frontend Update**: In your Vercel Dashboard, add/update the environment variable:
+    *   `NEXT_PUBLIC_BACKEND_URL`: [Your Railway Production URL]
+3.  **Final Test**: Open the Vercel site, go straight to **Analyze**, and upload a PDF — no login required.

@@ -1,31 +1,8 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException, Body, Depends
+from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from jose import jwt, JWTError
 import os
 import uuid
 import uvicorn
-from typing import List, Optional
-
-security = HTTPBearer()
-
-def verify_supabase_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
-    token = credentials.credentials
-    jwt_secret = os.environ.get("SUPABASE_JWT_SECRET")
-
-    if not jwt_secret:
-        raise HTTPException(status_code=500, detail="Server misconfiguration: SUPABASE_JWT_SECRET missing.")
-
-    try:
-        payload = jwt.decode(
-            token,
-            jwt_secret,
-            algorithms=["HS256"],
-            options={"verify_aud": False}
-        )
-        return payload
-    except JWTError as e:
-        raise HTTPException(status_code=401, detail="Invalid or expired authentication token.")
 
 from backend.ocr_service import OCRService
 from backend.rag_service import RAGService
@@ -52,41 +29,34 @@ async def health():
     return {"status": "healthy", "engine": "Railway Cloud"}
 
 @app.post("/api/v1/analyze")
-async def analyze_document(file: UploadFile = File(...), jurisdiction: str = "Central", _: dict = Depends(verify_supabase_token)):
-    """Legacy local upload support securely enforced."""
+async def analyze_document(file: UploadFile = File(...), jurisdiction: str = "Central"):
+    """Accepts a direct PDF upload and runs the full analysis pipeline."""
     if not file.filename.endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Only PDF files are supported")
-    
+
     session_id = str(uuid.uuid4())
     upload_dir = "uploads"
     if not os.path.exists(upload_dir):
         os.makedirs(upload_dir)
-    
+
     # Security: Use deterministic ID for file path to prevent Path Traversal
     file_path = os.path.join(upload_dir, f"{session_id}.pdf")
     with open(file_path, "wb") as buffer:
         buffer.write(await file.read())
-    
+
     try:
-        # Use existing OCR logic (local file) - Note: Railway should use URL variant for scale
-        return await _process_analysis(ocr_service.extract_text_from_url, file_path, jurisdiction, session_id, file.filename)
+        raw_text = ocr_service.extract_text_from_file(file_path)
+        return await _run_pipeline(raw_text, jurisdiction, session_id, file.filename)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Analysis failed: {str(e)}")
-
-@app.post("/api/v1/analyze-url")
-async def analyze_url(file_url: str = Body(..., embed=True), jurisdiction: str = "Central", _: dict = Depends(verify_supabase_token)):
-    """Cloud-native Supabase integration securely enforced."""
-    session_id = str(uuid.uuid4())
-    try:
-        raw_text = ocr_service.extract_text_from_url(file_url)
-        return await _run_pipeline(raw_text, jurisdiction, session_id, "Supabase Cloud File")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if os.path.exists(file_path):
+            os.remove(file_path)
 
 async def _run_pipeline(text: str, jurisdiction: str, session_id: str, filename: str):
     # Segment into Clauses
     clauses_text = ClauseSegmenter.segment_text(text)
-    
+
     # Analyze each clause with RAG + Ollama
     analyzed_clauses = []
     for t in clauses_text:
@@ -97,10 +67,10 @@ async def _run_pipeline(text: str, jurisdiction: str, session_id: str, filename:
             "explanation": analysis.get("explanation", "No explanation."),
             "statute_cited": analysis.get("statute_cited")
         })
-    
+
     # Calculate Risk Score
     risk_data = RiskCalculator.calculate_score(analyzed_clauses)
-    
+
     return {
         "session_id": session_id,
         "filename": filename,

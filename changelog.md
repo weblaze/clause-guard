@@ -53,6 +53,21 @@ All notable changes to the **Clause-Guard** project will be documented in this f
 - **Branch Strategy & CI/CD**:
   - Migrated deployment tracking to the `master` branch for both Vercel and Railway.
 
+## [Session 3] - 2026-08-06
+*Auth Removal & Standalone Prototype Simplification*
+
+### Completed
+- **Removed Google/Supabase Auth**: The Google OAuth sign-in flow was unreliable in production (consent screen misconfiguration) and gated the entire product behind login. Authentication has been removed entirely from both the frontend and backend.
+- **Removed Backend JWT Verification**: `verify_supabase_token` and the `/api/v1/analyze-url` endpoint (which required a Supabase JWT and a Supabase Storage URL) have been removed.
+- **Removed Dead Auth Code**: Deleted `backend/auth_service.py`, a vestigial, unused JWT/bcrypt module left over from an earlier design that was never wired into the live app.
+- **Removed Supabase Dependency Entirely**: Deleted `frontend/src/lib/supabase.ts` and `supabase_schema.sql`. The app no longer depends on Supabase for auth, storage, or persistence.
+- **Fixed the Direct-Upload Endpoint**: `/api/v1/analyze` previously called an undefined function and was non-functional. It now correctly extracts text from the uploaded PDF via a new `OCRService.extract_text_from_file` method and runs the full analysis pipeline.
+- **New Upload Flow**: The frontend now uploads the PDF directly to the FastAPI backend via `multipart/form-data` — no cloud storage bucket, no auth token, no login gate.
+- **Stateless by Design**: Analysis results are returned directly to the client and are not persisted to any database.
+
+### Result
+The application now runs end-to-end — upload a PDF, get a risk report — with no external account setup required, out of the box.
+
 ## Outstanding Features (Gap Analysis against ClauseGuard Final Report)
 *The following system features are outlined in the Final Report but currently remain pending or partially implemented:*
 

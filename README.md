@@ -18,7 +18,7 @@ Tenants frequently sign exploitative lease agreements due to a lack of legal kno
 - **RAG-Powered Analysis**: semantic clause analysis using **ChromaDB** vector storage and **Ollama** (Local LLMs).
 - **Clause Classification**: Automatic tagging of clauses as **Fair**, **Unfair**, or **Illegal**.
 - **Interactive Dashboard**: High-fidelity UI for viewing flagged clauses and jurisdictional citations.
-- **Privacy First**: Temporary sessions for guest users and secure history for registered users.
+- **No Account Required**: Documents are analyzed on the fly and nothing is persisted server-side — no login, no stored history.
 
 ## 🛠️ Technology Stack
 
@@ -34,8 +34,8 @@ Tenants frequently sign exploitative lease agreements due to a lack of legal kno
 - **Styling**: Vanilla CSS (Modern, Premium Aesthetics)
 - **Icons**: Lucide-React
 
-### Database
-- **Metadata/Users**: SQLite
+### Data Persistence
+- **None** — this prototype is stateless. Uploaded PDFs are processed in-memory/on-disk for the duration of a single request and the analysis result is returned directly to the client; nothing is written to a database.
 
 ---
 
@@ -70,6 +70,8 @@ clause-guard/
 - Node.js 24+
 - Tesseract OCR (Installed and added to PATH)
 - Ollama (Running locally)
+
+No third-party account (Supabase, Google OAuth, etc.) is required — the app runs standalone out of the box.
 
 ### Backend Setup
 1. Navigate to `/backend`.
