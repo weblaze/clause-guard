@@ -10,9 +10,9 @@ services:
       - key: TESSERACT_PATH
         value: /usr/bin/tesseract
       - key: OLLAMA_BASE_URL
-        sync: false
+        value: https://ollama.com
       - key: OLLAMA_MODEL
-        value: gemma3
+        value: gpt-oss:20b
       - key: OLLAMA_API_KEY
         sync: false
       - key: ALLOWED_ORIGINS
