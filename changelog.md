@@ -68,6 +68,15 @@ All notable changes to the **Clause-Guard** project will be documented in this f
 ### Result
 The application now runs end-to-end — upload a PDF, get a risk report — with no external account setup required, out of the box.
 
+## [Session 4] - 2026-08-06
+*Post-Auth-Removal Cleanup and Security Hardening*
+
+### Completed
+- **Dependency Cleanup**: Removed `requests`, `openai`, `langchain-openai`, `supabase`, `python-magic`, and `python-jose[cryptography]` from `requirements.txt`, and `@supabase/supabase-js` from the frontend — none were referenced anywhere in the code after the auth removal.
+- **CORS Tightened**: Replaced the wide-open `allow_origins=["*"]` with an explicit allowlist (`localhost:3000` plus any `*.vercel.app` deployment of this project, extendable via the `ALLOWED_ORIGINS` env var for a custom domain). Also dropped `allow_credentials=True`, which was never needed since the API doesn't use cookie-based auth.
+- **Security Headers Added**: `/api/v1/analyze` and all other responses now include `X-Content-Type-Options`, `X-Frame-Options`, and `Referrer-Policy` headers.
+- **Basic Rate Limiting**: Added a lightweight in-memory per-IP rate limiter (10 requests/minute) on `/api/v1/analyze` to blunt casual abuse of the OCR/LLM pipeline.
+
 ## Outstanding Features (Gap Analysis against ClauseGuard Final Report)
 *The following system features are outlined in the Final Report but currently remain pending or partially implemented:*
 

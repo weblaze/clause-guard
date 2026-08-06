@@ -31,6 +31,7 @@ Railway will host your FastAPI backend using the deterministic Docker configurat
 4.  **Environment Variables**:
     *   `PORT`: `8000` (Railway usually maps this automatically, but set it to be sure).
     *   `TESSERACT_PATH`: `/usr/bin/tesseract` (Pre-installed in the Docker image).
+    *   `ALLOWED_ORIGINS` *(optional)*: comma-separated list of extra frontend origins allowed to call the API (e.g. a custom domain). Any `https://clause-guard*.vercel.app` origin and `http://localhost:3000` are always allowed by default, so you don't need to set this unless you're using a custom domain.
 5.  **Deploy**: Railway will build and launch your backend.
 
 ---
