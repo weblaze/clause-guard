@@ -77,6 +77,15 @@ The application now runs end-to-end — upload a PDF, get a risk report — with
 - **Security Headers Added**: `/api/v1/analyze` and all other responses now include `X-Content-Type-Options`, `X-Frame-Options`, and `Referrer-Policy` headers.
 - **Basic Rate Limiting**: Added a lightweight in-memory per-IP rate limiter (10 requests/minute) on `/api/v1/analyze` to blunt casual abuse of the OCR/LLM pipeline.
 
+## [Session 5] - 2026-08-06
+*Backend Migration: Railway to Render*
+
+### Completed
+- **Railway Free-Tier Issues**: Railway's free plan now requires deployments to run in serverless mode, and the service was found shut down/unreachable (`404 - the train has not arrived at the station`). Rather than continue fighting Railway's free-tier constraints, the backend was migrated to Render.
+- **Added `render.yaml`**: A Render Blueprint reusing the existing root `Dockerfile` unchanged — Docker runtime, free plan, health check on `/api/v1/health`, with `OLLAMA_BASE_URL`/`OLLAMA_API_KEY`/`ALLOWED_ORIGINS` prompted as secrets at deploy time.
+- **Updated Fallback URL**: The frontend's hardcoded backend fallback now points at the expected Render URL, though `NEXT_PUBLIC_BACKEND_URL` in Vercel remains the source of truth and must be set explicitly.
+- **Docs & Copy Updated**: `deployment_guide.md`, `README.md`, and in-app branding copy now reference Render instead of Railway. Railway config (`railway.json`) was left in place as a documented fallback option rather than deleted.
+
 ## Outstanding Features (Gap Analysis against ClauseGuard Final Report)
 *The following system features are outlined in the Final Report but currently remain pending or partially implemented:*
 

@@ -2,7 +2,7 @@
 
 Follow these steps to establish a clean, automated deployment pipeline using your GitHub repository.
 
-## 1. Northern Frontend (Vercel)
+## 1. Frontend (Vercel)
 
 Vercel will host your Next.js application and connect automatically to your GitHub repo.
 
@@ -12,34 +12,41 @@ Vercel will host your Next.js application and connect automatically to your GitH
     *   **Root Directory**: Set this to `frontend`.
     *   **Framework Preset**: Keep as `Next.js`.
     *   **Production Branch**: Ensure this is set to `master`.
-4.  **Environment Variables**: Add the following once your Railway backend is live (see Section 2):
-    *   `NEXT_PUBLIC_BACKEND_URL`: Your Railway backend URL.
+4.  **Environment Variables**: Add the following once your Render backend is live (see Section 2):
+    *   `NEXT_PUBLIC_BACKEND_URL`: Your Render backend URL.
 5.  **Deploy**: Click **"Deploy"**. Future pushes to GitHub will now auto-update this site.
 
 ---
 
-## 2. Southern AI Engine (Railway)
+## 2. Backend (Render)
 
-Railway will host your FastAPI backend using the deterministic Docker configuration.
+Render hosts the FastAPI backend using the same root `Dockerfile` and the `render.yaml` blueprint already committed to this repo.
 
-1.  **New Project**: In Railway, click **"New Project"** > **"Deploy from GitHub repo"**.
-2.  **Connect GitHub**: Select your `clause-guard` repository.
-3.  **Service Settings**:
-    *   **Root Directory**: Keep this as `/` (the project root).
-    *   **Deployment Branch**: Ensure Railway is watching the `master` branch.
-    *   **Railway will automatically find the root `Dockerfile`**.
-4.  **Environment Variables**:
-    *   `PORT`: `8000` (Railway usually maps this automatically, but set it to be sure).
-    *   `TESSERACT_PATH`: `/usr/bin/tesseract` (Pre-installed in the Docker image).
-    *   `ALLOWED_ORIGINS` *(optional)*: comma-separated list of extra frontend origins allowed to call the API (e.g. a custom domain). Any `https://clause-guard*.vercel.app` origin and `http://localhost:3000` are always allowed by default, so you don't need to set this unless you're using a custom domain.
-5.  **Deploy**: Railway will build and launch your backend.
+1.  **New Blueprint**: In the Render dashboard, click **"New +"** > **"Blueprint"**.
+2.  **Connect GitHub**: Select your `clause-guard` repository. Render will detect `render.yaml` at the repo root and pre-fill a `clause-guard-backend` web service (Docker runtime, free plan, health check on `/api/v1/health`).
+3.  **Environment Variables**: Render will prompt you to fill in the variables marked `sync: false` in `render.yaml` before the first deploy:
+    *   `OLLAMA_BASE_URL`: Your Ollama endpoint (cloud-hosted or self-hosted).
+    *   `OLLAMA_MODEL`: Defaults to `gemma3` — change if you're using a different model.
+    *   `OLLAMA_API_KEY`: Only needed if your Ollama endpoint requires auth.
+    *   `ALLOWED_ORIGINS` *(optional)*: comma-separated list of extra frontend origins allowed to call the API (e.g. a custom domain). Any `https://clause-guard*.vercel.app` origin and `http://localhost:3000` are always allowed by default.
+4.  **Deploy**: Render will build the Docker image and launch the backend. Note the assigned URL (e.g. `https://clause-guard-backend.onrender.com` — Render suffixes it if that name is already taken by someone else).
+
+> [!NOTE]
+> Render's free plan spins the service down after ~15 minutes of inactivity and cold-starts on the next request. The first request after idle time will be slow, since `RAGService` re-initializes ChromaDB and re-embeds the statute knowledge base on every boot.
 
 ---
 
-## 3. Post-Migration Verification
+## 3. Post-Deploy Verification
 
 Once both services are live:
-1.  **Link Services**: Copy your Railway **Production URL** (e.g., `https://xxxx.up.railway.app`).
+1.  **Copy the Render URL**: From the Render dashboard, copy your service's public URL.
 2.  **Frontend Update**: In your Vercel Dashboard, add/update the environment variable:
-    *   `NEXT_PUBLIC_BACKEND_URL`: [Your Railway Production URL]
-3.  **Final Test**: Open the Vercel site, go straight to **Analyze**, and upload a PDF — no login required.
+    *   `NEXT_PUBLIC_BACKEND_URL`: [Your Render URL]
+    *   Trigger a redeploy in Vercel so the new env var actually takes effect (env var changes don't apply retroactively to an already-built deployment).
+3.  **Final Test**: Open the Vercel site, go straight to **Analyze**, and upload a PDF — no login required. If the backend just cold-started, the first request may take a while before you see a result.
+
+---
+
+## Alternative: Railway
+
+This repo still contains `railway.json`, so Railway remains an option if you want to revisit it later. On Railway's free plan, deployments must run in **serverless mode** (toggle this in the service settings) — the same cold-start-on-idle trade-off as Render's free tier, just enforced as an explicit setting rather than a fixed timeout.

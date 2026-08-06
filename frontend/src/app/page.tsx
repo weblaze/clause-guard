@@ -77,7 +77,7 @@ export default function Home() {
 
       <footer style={{ padding: '4rem 0', borderTop: '1px solid var(--border-glass)', textAlign: 'center' }}>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-          &copy; 2026 Clause-Guard. Legal-Grade Cloud Deployment Powered by Vercel & Railway.
+          &copy; 2026 Clause-Guard. Legal-Grade Cloud Deployment Powered by Vercel & Render.
         </p>
       </footer>
     </main>

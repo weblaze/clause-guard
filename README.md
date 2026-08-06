@@ -57,7 +57,7 @@ clause-guard/
 
 ## 🌿 Branching Strategy
 
-- `master`: Stable production-ready code (Tracked by Vercel and Railway for deployments).
+- `master`: Stable production-ready code (Tracked by Vercel and Render for deployments).
 - `arunav`: Main development branch for Arunav.
 - `srishti`: Collaboration branch for Srishti.
 

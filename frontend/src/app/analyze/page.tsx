@@ -28,7 +28,7 @@ export default function AnalyzePage() {
     setProgress('Uploading document...');
 
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://clause-guard-backend.up.railway.app'; // Fallback
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://clause-guard-backend.onrender.com'; // Fallback
 
       const formData = new FormData();
       formData.append('file', file);
@@ -48,7 +48,7 @@ export default function AnalyzePage() {
             const errData = JSON.parse(text);
             errorDetail = errData.detail || errData.message || JSON.stringify(errData);
           } catch (e) {
-            // It returned HTML instead of JSON. Railway server is probably a 404 or Gateway Timeout!
+            // It returned HTML instead of JSON. The backend is probably asleep/cold-starting, a 404, or a Gateway Timeout!
             errorDetail = `HTTP ${response.status} from ${backendUrl} (Is the backend running?)`;
           }
         } catch(e) {}

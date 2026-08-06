@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: clause-guard-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: TESSERACT_PATH
+        value: /usr/bin/tesseract
+      - key: OLLAMA_BASE_URL
+        sync: false
+      - key: OLLAMA_MODEL
+        value: gemma3
+      - key: OLLAMA_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
