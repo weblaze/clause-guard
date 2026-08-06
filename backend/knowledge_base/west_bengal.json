@@ -1,0 +1,50 @@
+[
+  {
+    "id": "WBPTA_1997_APPLICABILITY",
+    "title": "Applicability and Non-Residential Rent Threshold",
+    "text": "The West Bengal Premises Tenancy Act, 1997 governs tenancies in Kolkata, Howrah and other specified areas of the state, and remains in force (West Bengal has not adopted the central Model Tenancy Act, 2021). Under Section 3, the Act does not apply to non-residential premises let at a monthly rent exceeding Rs. 10,000 within the Kolkata or Howrah Municipal Corporation areas, or Rs. 5,000 elsewhere in the state - such higher-rent commercial tenancies fall outside the Act's tenant protections.",
+    "jurisdiction": "West Bengal",
+    "category": "Applicability",
+    "source": "West Bengal Premises Tenancy Act, 1997 (West Bengal Act XXXVII of 1997), Section 3"
+  },
+  {
+    "id": "WBPTA_1997_ADVANCE_RENT_CAP",
+    "title": "Cap on Advance Rent and Prohibition on Premium",
+    "text": "Section 14(1) prohibits any person from claiming or receiving a premium or other consideration for the grant, renewal or continuance of a tenancy, and separately bars demanding more than one month's rent in advance without the Controller's prior permission. A person who takes a premium or excess advance rent in contravention of Section 14 is liable to a fine of up to Rs. 50,000 under Section 30.",
+    "jurisdiction": "West Bengal",
+    "category": "Financial",
+    "source": "West Bengal Premises Tenancy Act, 1997, Sections 14 and 30"
+  },
+  {
+    "id": "WBPTA_1997_FAIR_RENT_FIXATION",
+    "title": "Fair Rent Fixation by the Controller",
+    "text": "Either the landlord or the tenant may apply to the Rent Controller under Section 17 to have a 'fair rent' fixed for the premises, using formulas set out in the Act's schedules for older tenancies. Civil courts are barred from adjudicating fair-rent disputes that fall within the Controller's jurisdiction.",
+    "jurisdiction": "West Bengal",
+    "category": "Financial",
+    "source": "West Bengal Premises Tenancy Act, 1997, Section 17 and Schedule II"
+  },
+  {
+    "id": "WBPTA_1997_REPAIR_OBLIGATIONS",
+    "title": "Landlord's Obligation to Maintain Premises and Essential Services",
+    "text": "Section 4(2) and 4(3) bind the landlord to keep the premises in good and tenantable condition and to maintain essential supplies or services, such as water and electricity, comprised in the tenancy. Chapter IX (Section 35) sets out a procedure allowing the tenant to seek the Controller's permission to carry out essential repairs itself, and recover the cost, if the landlord fails to act after notice.",
+    "jurisdiction": "West Bengal",
+    "category": "Maintenance",
+    "source": "West Bengal Premises Tenancy Act, 1997, Sections 4(2)-4(3) and 35"
+  },
+  {
+    "id": "WBPTA_1997_EVICTION_GROUNDS",
+    "title": "Restricted Grounds for Eviction",
+    "text": "Under Section 6(1), no court may order recovery of possession in the landlord's favour except through a suit based on specified grounds, including default in rent payment for three months, unauthorised subletting/assignment or an unauthorised change of use without the landlord's written consent, and a genuine requirement for building, rebuilding or the landlord's own occupation. Where a landlord acquired the premises by transfer, a suit for possession on the building/rebuilding or own-occupation ground cannot be filed until one year has passed since acquiring that interest.",
+    "jurisdiction": "West Bengal",
+    "category": "Legal",
+    "source": "West Bengal Premises Tenancy Act, 1997, Section 6"
+  },
+  {
+    "id": "WBPTA_1997_TENANT_OBLIGATIONS",
+    "title": "Tenant's Statutory Obligations",
+    "text": "Section 5 requires a tenant to pay rent within the prescribed period, use the premises only for the purpose for which it was let, avoid unauthorised structural alterations or subletting without the landlord's written consent, and allow the landlord to inspect the premises on notice. Tenants are also required to contribute towards maintenance charges and their proportionate share of municipal taxes as occupier.",
+    "jurisdiction": "West Bengal",
+    "category": "Maintenance",
+    "source": "West Bengal Premises Tenancy Act, 1997, Section 5"
+  }
+]

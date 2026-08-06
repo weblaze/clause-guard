@@ -1,0 +1,42 @@
+[
+  {
+    "id": "GRHLA_1947_APPLICABILITY",
+    "title": "Old Rent Act Still in Force, Not the Model Tenancy Act",
+    "text": "Gujarat has not adopted the central Model Tenancy Act, 2021; tenancies remain governed by the Gujarat Rents, Hotel and Lodging House Rates Control Act, 1947 (the Bombay Rent Act as extended to Gujarat), whose validity has been repeatedly extended by the state legislature. Premises constructed on or after the Gujarat Second Amendment Act, 2001, along with government-owned premises, are excluded from the Act's rent-control machinery and instead governed by ordinary contract terms.",
+    "jurisdiction": "Gujarat",
+    "category": "Applicability",
+    "source": "Gujarat Rents, Hotel and Lodging House Rates Control Act, 1947, as amended"
+  },
+  {
+    "id": "GRHLA_1947_STANDARD_RENT",
+    "title": "Standard Rent and Permitted Increases",
+    "text": "For tenancies the Act covers, rent is anchored to a 'standard rent' concept - broadly the rent last fixed by a court, or the rent at which the premises were let around September 1940, or a rent fixed afresh by the Rent Court where that historical rent cannot be ascertained. Increases above standard rent are only lawful where specifically permitted, such as increases tied to heavy repairs, added amenities, or increased municipal taxes actually paid by the landlord; an open-ended or arbitrary rent hike is not enforceable under the Act.",
+    "jurisdiction": "Gujarat",
+    "category": "Financial",
+    "source": "Gujarat Rents, Hotel and Lodging House Rates Control Act, 1947, Sections 5(10), 10 and 11"
+  },
+  {
+    "id": "GRHLA_1947_SECURITY_DEPOSIT",
+    "title": "No Statutory Security Deposit Cap",
+    "text": "The 1947 Act does not prescribe any statutory cap on the security deposit a landlord may charge; the amount is a matter of contract between the parties. In practice, deposits of roughly two to three months' rent are common market practice in Gujarat, but this is custom rather than a legal ceiling, so a higher deposit is not automatically illegal under this Act.",
+    "jurisdiction": "Gujarat",
+    "category": "Financial",
+    "source": "Gujarat Rents, Hotel and Lodging House Rates Control Act, 1947 - no statutory deposit cap identified; figure cited is customary market practice, not a legal provision"
+  },
+  {
+    "id": "GRHLA_1947_EVICTION_GROUNDS",
+    "title": "Exclusive Grounds for Eviction",
+    "text": "A landlord may recover possession from a tenant protected by the Act only on grounds listed in the Act, including arrears of rent, unlawful subletting or transfer of the tenancy, unauthorised permanent structural alterations, use of the premises for nuisance or illegal/immoral purposes, the landlord's bona fide and reasonable requirement of the premises (subject to a comparative-hardship test), or where the premises are genuinely required for repair, reconstruction, or demolition. Eviction outside these enumerated grounds is not permitted for a tenancy the Act covers.",
+    "jurisdiction": "Gujarat",
+    "category": "Legal",
+    "source": "Gujarat Rents, Hotel and Lodging House Rates Control Act, 1947, Section 13(1)"
+  },
+  {
+    "id": "GRHLA_1947_MAINTENANCE_ESSENTIAL_SERVICES",
+    "title": "Repair Duty and Ban on Cutting Essential Supply",
+    "text": "The landlord has a duty to keep the premises in good repair; if the landlord fails to do so after notice, the tenant may carry out necessary repairs and deduct the cost from rent otherwise payable. Separately, the landlord is prohibited from cutting off or withholding an essential supply or service (water is expressly treated as one) to the tenant, which can attract criminal as well as civil consequences.",
+    "jurisdiction": "Gujarat",
+    "category": "Maintenance",
+    "source": "Gujarat Rents, Hotel and Lodging House Rates Control Act, 1947, Sections 23 and 24"
+  }
+]

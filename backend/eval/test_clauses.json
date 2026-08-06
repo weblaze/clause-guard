@@ -1,0 +1,55 @@
+[
+  {"id": "central-1", "jurisdiction": "Central", "clause_text": "The security deposit shall be equal to ten months' rent, payable in advance.", "expected_classification": "ILLEGAL", "expected_statute_id": "MTA_2021_SEC_DEPOSIT"},
+  {"id": "central-2", "jurisdiction": "Central", "clause_text": "The landlord shall be responsible for structural repairs and whitewashing of the premises annually.", "expected_classification": "FAIR", "expected_statute_id": "MTA_2021_MAINTENANCE_LL"},
+  {"id": "central-3", "jurisdiction": "Central", "clause_text": "The landlord may disconnect the water supply immediately if rent is delayed by even one day.", "expected_classification": "ILLEGAL", "expected_statute_id": "MTA_2021_ESSENTIAL_SERVICES"},
+  {"id": "central-4", "jurisdiction": "Central", "clause_text": "Rent shall be revised annually as mutually agreed, with the landlord providing three months' written notice before the revised rent takes effect.", "expected_classification": "FAIR", "expected_statute_id": "MTA_2021_RENT_REVISION"},
+
+  {"id": "delhi-1", "jurisdiction": "Delhi", "clause_text": "The landlord may terminate this tenancy and evict the tenant at any time for any reason, with immediate effect.", "expected_classification": "ILLEGAL", "expected_statute_id": "DRCA_1958_SEC14_EVICTION_BAR"},
+  {"id": "delhi-2", "jurisdiction": "Delhi", "clause_text": "Should the tenant fail to pay rent, they may be evicted only after two months from the date of a written demand notice, provided they have not deposited the disputed amount.", "expected_classification": "FAIR", "expected_statute_id": "DRCA_1958_NONPAYMENT_GRACE"},
+  {"id": "delhi-3", "jurisdiction": "Delhi", "clause_text": "A landlord who purchases this property may seek eviction for personal use only after five years from the date of purchase.", "expected_classification": "FAIR", "expected_statute_id": "DRCA_1958_NEW_OWNER_BAR"},
+
+  {"id": "maharashtra-1", "jurisdiction": "Maharashtra", "clause_text": "The landlord shall charge rent not exceeding the standard rent fixed under applicable law.", "expected_classification": "FAIR", "expected_statute_id": "MRCA_1999_STANDARD_RENT"},
+  {"id": "maharashtra-2", "jurisdiction": "Maharashtra", "clause_text": "The landlord may terminate the tenancy and repossess the premises at will without any cause.", "expected_classification": "ILLEGAL", "expected_statute_id": "MRCA_1999_EVICTION_GROUNDS"},
+  {"id": "maharashtra-3", "jurisdiction": "Maharashtra", "clause_text": "The tenant shall pay a refundable security deposit of twenty-four months' rent at signing.", "expected_classification": "UNFAIR", "expected_statute_id": "MRCA_1999_DEPOSIT_PRACTICE"},
+
+  {"id": "haryana-1", "jurisdiction": "Haryana", "clause_text": "The landlord shall collect a one-time premium of Rs. 500,000 in addition to monthly rent as a condition of tenancy.", "expected_classification": "ILLEGAL", "expected_statute_id": "HURCEA_1973_ADVANCE_RENT"},
+  {"id": "haryana-2", "jurisdiction": "Haryana", "clause_text": "The landlord shall carry out necessary repairs to the premises and provide water and electricity connections where available.", "expected_classification": "FAIR", "expected_statute_id": "HURCEA_1973_REPAIRS"},
+
+  {"id": "mp-1", "jurisdiction": "Madhya Pradesh", "clause_text": "The tenant shall pay an advance of four months' rent along with a non-refundable pugree of Rs. 200,000.", "expected_classification": "ILLEGAL", "expected_statute_id": "MPACA_1961_ADVANCE_RENT"},
+  {"id": "mp-2", "jurisdiction": "Madhya Pradesh", "clause_text": "The landlord shall maintain the accommodation in good and tenantable repair throughout the tenancy.", "expected_classification": "FAIR", "expected_statute_id": "MPACA_1961_REPAIRS"},
+
+  {"id": "bihar-1", "jurisdiction": "Bihar", "clause_text": "The landlord shall not demand any premium, salami, or advance rent exceeding one month's rent.", "expected_classification": "FAIR", "expected_statute_id": "BBLRECA_1982_ADVANCE_RENT"},
+  {"id": "bihar-2", "jurisdiction": "Bihar", "clause_text": "The tenant may be evicted immediately at the landlord's sole discretion without a court order.", "expected_classification": "ILLEGAL", "expected_statute_id": "BBLRECA_1982_EVICTION_GROUNDS"},
+
+  {"id": "telangana-1", "jurisdiction": "Telangana", "clause_text": "The landlord may disconnect the electricity and water supply at any time to compel the tenant to vacate.", "expected_classification": "ILLEGAL", "expected_statute_id": "TBLRECA_1960_ESSENTIAL_SUPPLY_PROTECTION"},
+  {"id": "telangana-2", "jurisdiction": "Telangana", "clause_text": "The tenant shall pay an advance not exceeding one month's rent at the commencement of the tenancy.", "expected_classification": "FAIR", "expected_statute_id": "TBLRECA_1960_ADVANCE_RENT_CAP"},
+
+  {"id": "kerala-1", "jurisdiction": "Kerala", "clause_text": "The landlord may cut off the water supply without cause if the tenant disputes the rent amount.", "expected_classification": "ILLEGAL", "expected_statute_id": "KBLRCA_1965_ESSENTIAL_SUPPLY_PROTECTION"},
+  {"id": "kerala-2", "jurisdiction": "Kerala", "clause_text": "Eviction shall only be sought through the Rent Control Court on grounds such as non-payment of rent for over fifteen days after the due date or bona fide personal need.", "expected_classification": "FAIR", "expected_statute_id": "KBLRCA_1965_EVICTION_GROUNDS"},
+
+  {"id": "punjab-1", "jurisdiction": "Punjab", "clause_text": "Rent shall be increased by five percent annually for the first two years, and thereafter adjusted per the Consumer Price Index for the third year.", "expected_classification": "FAIR", "expected_statute_id": "PRA_1995_RENT_INCREASE"},
+  {"id": "punjab-2", "jurisdiction": "Punjab", "clause_text": "The landlord may evict the tenant without any specified cause upon thirty days' notice.", "expected_classification": "ILLEGAL", "expected_statute_id": "PRA_1995_EVICTION_GROUNDS"},
+
+  {"id": "up-1", "jurisdiction": "Uttar Pradesh", "clause_text": "The tenant shall pay a security deposit not exceeding two months' rent for this residential tenancy.", "expected_classification": "FAIR", "expected_statute_id": "UPTA_2021_SECURITY_DEPOSIT"},
+  {"id": "up-2", "jurisdiction": "Uttar Pradesh", "clause_text": "The landlord may withhold water and electricity supply if the tenant disputes any charge.", "expected_classification": "ILLEGAL", "expected_statute_id": "UPTA_2021_MAINTENANCE_ESSENTIAL_SERVICES"},
+
+  {"id": "gujarat-1", "jurisdiction": "Gujarat", "clause_text": "The landlord shall not withhold the water supply to the tenant under any circumstances without just cause.", "expected_classification": "FAIR", "expected_statute_id": "GRHLA_1947_MAINTENANCE_ESSENTIAL_SERVICES"},
+  {"id": "gujarat-2", "jurisdiction": "Gujarat", "clause_text": "The landlord may terminate this tenancy without any of the grounds specified by law, at his sole option.", "expected_classification": "ILLEGAL", "expected_statute_id": "GRHLA_1947_EVICTION_GROUNDS"},
+
+  {"id": "rajasthan-1", "jurisdiction": "Rajasthan", "clause_text": "The security deposit collected from the tenant shall not exceed one month's rent, refundable within one month of vacating.", "expected_classification": "FAIR", "expected_statute_id": "RRCA_2001_SECURITY_DEPOSIT"},
+  {"id": "rajasthan-2", "jurisdiction": "Rajasthan", "clause_text": "The landlord may discontinue amenities such as water, electricity, or lift access at his discretion without Tribunal approval.", "expected_classification": "ILLEGAL", "expected_statute_id": "RRCA_2001_MAINTENANCE_ESSENTIAL_SERVICES"},
+
+  {"id": "central-unfair-1", "jurisdiction": "Central", "clause_text": "The tenant shall be solely responsible for obtaining and paying for all utility connections, and any deposit paid to the utility provider will not be reimbursed by the landlord even if the tenant vacates before the connection is transferred.", "expected_classification": "UNFAIR", "expected_statute_id": "MTA_2021_MAINTENANCE_LL"},
+  {"id": "delhi-unfair-1", "jurisdiction": "Delhi", "clause_text": "Any disputes arising under this agreement shall be resolved exclusively in courts located in the landlord's home city, regardless of where the tenant resides or the property is located.", "expected_classification": "UNFAIR", "expected_statute_id": "DRCA_1958_SEC14_EVICTION_BAR"},
+  {"id": "gujarat-unfair-1", "jurisdiction": "Gujarat", "clause_text": "The tenant shall not sublet, transfer, or invite any overnight guest without prior written consent of the landlord, to be granted or withheld at the landlord's sole and unreviewable discretion.", "expected_classification": "UNFAIR", "expected_statute_id": "GRHLA_1947_EVICTION_GROUNDS"},
+  {"id": "punjab-unfair-1", "jurisdiction": "Punjab", "clause_text": "The tenant forfeits the entire security deposit if the lease is terminated early for any reason, including reasons attributable solely to the landlord.", "expected_classification": "UNFAIR", "expected_statute_id": "PRA_1995_ADVANCE_REFUND"},
+
+  {"id": "tamilnadu-1", "jurisdiction": "Tamil Nadu", "clause_text": "The landlord may cut off water and electricity supply to the premises at any time during a rent dispute.", "expected_classification": "ILLEGAL", "expected_statute_id": "TNRRRLTA_2017_ESSENTIAL_SERVICES"},
+  {"id": "tamilnadu-2", "jurisdiction": "Tamil Nadu", "clause_text": "Where the tenancy agreement is silent on the deposit amount, the security deposit shall not exceed three months' rent and will be refunded within one month of vacating.", "expected_classification": "FAIR", "expected_statute_id": "TNRRRLTA_2017_SECURITY_DEPOSIT"},
+
+  {"id": "karnataka-1", "jurisdiction": "Karnataka", "clause_text": "The landlord shall charge a monetary penalty for late tenancy registration rather than pursue imprisonment of either party.", "expected_classification": "FAIR", "expected_statute_id": "KRA_1999_REGISTRATION"},
+  {"id": "karnataka-2", "jurisdiction": "Karnataka", "clause_text": "The landlord may collect an additional premium payment before consenting to the tenant subletting the premises.", "expected_classification": "ILLEGAL", "expected_statute_id": "KRA_1999_NO_PREMIUM"},
+
+  {"id": "westbengal-1", "jurisdiction": "West Bengal", "clause_text": "The landlord shall not demand more than one month's rent in advance, nor any premium for granting this tenancy.", "expected_classification": "FAIR", "expected_statute_id": "WBPTA_1997_ADVANCE_RENT_CAP"},
+  {"id": "westbengal-2", "jurisdiction": "West Bengal", "clause_text": "The tenant may be evicted by the landlord at any time without a court suit or any of the statutory grounds being shown.", "expected_classification": "ILLEGAL", "expected_statute_id": "WBPTA_1997_EVICTION_GROUNDS"}
+]

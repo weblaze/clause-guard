@@ -1,0 +1,42 @@
+[
+  {
+    "id": "KBLRCA_1965_APPLICABILITY",
+    "title": "Own Rent Control Act, Limited to Municipal Areas",
+    "text": "Kerala has not adopted the central Model Tenancy Act, 2021. Tenancies of buildings within municipal or corporation limits are governed by the Kerala Buildings (Lease and Rent Control) Act, 1965; buildings in panchayat (rural) areas fall outside the Act and are instead governed by the general law of contract and the Transfer of Property Act, 1882.",
+    "jurisdiction": "Kerala",
+    "category": "Applicability",
+    "source": "Kerala Buildings (Lease and Rent Control) Act, 1965"
+  },
+  {
+    "id": "KBLRCA_1965_DEPOSIT_NO_CAP",
+    "title": "No Statutory Cap on Advance/Deposit",
+    "text": "The Kerala Buildings (Lease and Rent Control) Act, 1965 does not impose a fixed statutory ceiling on the advance or security deposit a landlord may collect. Deposit amounts in Kerala leases are therefore largely a matter of contract between the parties, subject to the Act's general bar on landlords charging an 'unconscionable' rent.",
+    "jurisdiction": "Kerala",
+    "category": "Financial",
+    "source": "Kerala Buildings (Lease and Rent Control) Act, 1965 - no statutory deposit cap identified; based on targeted section review rather than an exhaustive read of the full Act, moderate confidence"
+  },
+  {
+    "id": "KBLRCA_1965_EVICTION_GROUNDS",
+    "title": "Restricted Grounds for Eviction",
+    "text": "A landlord may recover possession from a tenant under the Kerala Buildings (Lease and Rent Control) Act, 1965 only through the Rent Control Court and only on specified grounds, including non-payment of rent within fifteen days of the due date, bona fide personal need for occupation by the landlord or a dependent family member, unauthorised subletting or transfer, material and permanent damage to the building, the tenant already possessing another suitable building, genuine need for reconstruction, or continuous non-occupation by the tenant for six months without reasonable cause. Eviction outside these grounds is not permitted for tenancies the Act covers.",
+    "jurisdiction": "Kerala",
+    "category": "Legal",
+    "source": "Kerala Buildings (Lease and Rent Control) Act, 1965, Section 11(2)-(4)"
+  },
+  {
+    "id": "KBLRCA_1965_REPAIR_OBLIGATIONS",
+    "title": "Landlord Repair Duty With Tenant Self-Help Remedy",
+    "text": "Notwithstanding any contract to the contrary, the landlord is bound to attend to periodical maintenance and necessary repairs of a tenanted building. If the landlord fails to do so within a reasonable time after the tenant gives notice, the Accommodation Controller may allow the tenant to carry out the repairs and deduct the cost, plus 6% annual interest, from the rent payable.",
+    "jurisdiction": "Kerala",
+    "category": "Maintenance",
+    "source": "Kerala Buildings (Lease and Rent Control) Act, 1965, Section 17"
+  },
+  {
+    "id": "KBLRCA_1965_ESSENTIAL_SUPPLY_PROTECTION",
+    "title": "No Cutting Off Essential Amenities",
+    "text": "A landlord may not, without just or sufficient cause, cut off or withhold any amenity enjoyed by the tenant, such as water, electricity, or passage access. A tenant subjected to such a cutoff can seek an immediate interim restoration order from the Accommodation Controller - even without prior notice to the landlord - if the cutoff appears aimed at forcing eviction or a rent increase.",
+    "jurisdiction": "Kerala",
+    "category": "Legal",
+    "source": "Kerala Buildings (Lease and Rent Control) Act, 1965, Section 13"
+  }
+]

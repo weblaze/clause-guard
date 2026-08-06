@@ -1,0 +1,42 @@
+[
+  {
+    "id": "PRA_1995_APPLICABILITY",
+    "title": "Own Rent Act, Not the Model Tenancy Act",
+    "text": "Punjab has not adopted the central Model Tenancy Act, 2021. Tenancies in the state continue to be governed by the Punjab Rent Act, 1995, which - despite its title year - was notified as Punjab Act 13 of 2012 and only brought into force on 30 November 2013, replacing the earlier East Punjab Urban Rent Restriction Act, 1949 for premises it covers.",
+    "jurisdiction": "Punjab",
+    "category": "Applicability",
+    "source": "Punjab Rent Act, 1995 (Punjab Act 13 of 2012)"
+  },
+  {
+    "id": "PRA_1995_ADVANCE_REFUND",
+    "title": "No Statutory Deposit Cap, But Advance Must Be Refunded With Interest",
+    "text": "The Punjab Rent Act, 1995 does not fix a statutory ceiling on the security deposit or advance a landlord may collect; the amount is left to agreement between the parties. However, where a landlord recovers possession, any advance received from the tenant must be refunded on the date possession is recovered, with 15% simple annual interest payable if the refund is delayed.",
+    "jurisdiction": "Punjab",
+    "category": "Financial",
+    "source": "Punjab Rent Act, 1995 - no statutory deposit cap identified; refund/interest obligation drawn from secondary summarization, exact section number not independently confirmed, moderate confidence"
+  },
+  {
+    "id": "PRA_1995_RENT_INCREASE",
+    "title": "Agreed Rent With Formula-Based Annual Increases",
+    "text": "Rent under the Punjab Rent Act, 1995 is primarily the rent agreed between landlord and tenant. Where the Act's default enhancement mechanism applies, rent may be increased by 5% annually for two years, with the third-year increase instead pegged to the rise in the Consumer Price Index over the preceding three years, after which the cycle repeats - a formula that a lease clause imposing arbitrary or steeper annual hikes could conflict with.",
+    "jurisdiction": "Punjab",
+    "category": "Financial",
+    "source": "Punjab Rent Act, 1995, Section 6 read with Schedule I"
+  },
+  {
+    "id": "PRA_1995_EVICTION_GROUNDS",
+    "title": "Restricted Grounds for Eviction",
+    "text": "A landlord may recover possession of tenanted premises under the Punjab Rent Act, 1995 only through an order of the Rent Authority and only on specified grounds, including non-payment of rent and other charges for three or more consecutive months after notice, use of the premises for a purpose other than agreed, continuous non-occupation for six months, need for repair or reconstruction requiring vacant possession, substantial damage to the premises, nuisance or illegal/immoral use, or the landlord's bona fide requirement of the premises for residential or non-residential occupation. Eviction outside these grounds is not permitted for tenancies the Act covers.",
+    "jurisdiction": "Punjab",
+    "category": "Legal",
+    "source": "Punjab Rent Act, 1995, Section 20(2)"
+  },
+  {
+    "id": "PRA_1995_REPAIR_OBLIGATIONS",
+    "title": "Divided Repair Obligations by Schedule",
+    "text": "The Punjab Rent Act, 1995 divides repair responsibility: the landlord must keep the premises in good and tenantable repair as to the items listed in Part A of Schedule II, while the tenant is responsible for the items in Part B. If the landlord fails to repair after three months' notice, the tenant may carry out the work and deduct the cost from rent, capped at 50% of annual rent; if the tenant fails after 60 days' notice, the landlord may carry out the work and recover the cost from the tenant.",
+    "jurisdiction": "Punjab",
+    "category": "Maintenance",
+    "source": "Punjab Rent Act, 1995, Sections 17 and 18"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "BBLRECA_1982_APPLICABILITY",
+    "title": "Exemption for Government and Institutional Landlords",
+    "text": "The Bihar Buildings (Lease, Rent and Eviction) Control Act, 1982 carves out premises where the landlord is the State or Central Government, a local authority, or certain specified trusts/Waqf bodies from several of the Act's standard tenant-protection provisions, meaning different rules apply to such tenancies. A clause analysis should confirm who the landlord is before assuming full Act coverage applies.",
+    "jurisdiction": "Bihar",
+    "category": "Applicability",
+    "source": "Bihar Buildings (Lease, Rent and Eviction) Control Act, 1982, Section 32 - confidence: lower; drawn from secondary-source summaries, not a verified full-text read of Section 32"
+  },
+  {
+    "id": "BBLRECA_1982_ADVANCE_RENT",
+    "title": "No Premium; Advance Rent Capped at One Month",
+    "text": "It is unlawful for a landlord to claim any premium, salami, fine, or similar lump sum for granting, renewing, or continuing a tenancy, or to demand advance rent exceeding one month's rent. This caps what a landlord can lawfully collect upfront under a Bihar lease.",
+    "jurisdiction": "Bihar",
+    "category": "Financial",
+    "source": "Bihar Buildings (Lease, Rent and Eviction) Control Act, 1982, Section 3"
+  },
+  {
+    "id": "BBLRECA_1982_EVICTION_GROUNDS",
+    "title": "Restricted Grounds for Eviction",
+    "text": "A tenant may be evicted only by a court decree and only on specified grounds under the Bihar Buildings (Lease, Rent and Eviction) Control Act, 1982, including breach of tenancy conditions or unauthorised subletting, material deterioration of the building through the tenant's default, the landlord's bona fide need for personal or family occupation, arrears of two months' rent after notice (added by the 1993 amendment), expiry of a fixed lease term, or government-mandated works requiring vacant possession. Eviction outside these grounds is not permitted.",
+    "jurisdiction": "Bihar",
+    "category": "Legal",
+    "source": "Bihar Buildings (Lease, Rent and Eviction) Control Act, 1982, Section 11(1), as amended in 1993 - confidence: grounds (a)-(c) and the arrears clause well corroborated; the expiry-of-lease and government-works grounds are reconstructed from secondary summaries rather than a directly quoted primary text"
+  },
+  {
+    "id": "BBLRECA_1982_FAIR_RENT",
+    "title": "Fair Rent Fixation by Controller",
+    "text": "The Controller may determine the fair rent of a building on application by either party, having regard to prevailing rents for similar accommodation in the locality and any premium already paid by the tenant, where the agreed rent appears too high or too low. This allows either party to have an unreasonable rent figure judicially corrected rather than being bound to whatever was privately agreed.",
+    "jurisdiction": "Bihar",
+    "category": "Financial",
+    "source": "Bihar Buildings (Lease, Rent and Eviction) Control Act, 1982, Sections 5 and 8"
+  },
+  {
+    "id": "BBLRECA_1982_REPAIRS",
+    "title": "Landlord Repair Obligations and Tenant Self-Help",
+    "text": "A landlord must carry out repairs it is bound to make under law, contract, or custom, including annual whitewashing and periodical upkeep, and must maintain amenities such as water and electricity supply; if the landlord fails to do so, the tenant may carry out the repairs or restore the amenity itself and deduct the reasonable cost from rent. A lease clause requiring the tenant to bear all such costs without recourse may conflict with this provision.",
+    "jurisdiction": "Bihar",
+    "category": "Maintenance",
+    "source": "Bihar Buildings (Lease, Rent and Eviction) Control Act, 1982, Section 9"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "RRCA_2001_APPLICABILITY",
+    "title": "Own Rent Control Act, Not the Model Tenancy Act",
+    "text": "Rajasthan has not adopted the central Model Tenancy Act, 2021; residential and commercial tenancies continue to be governed by the Rajasthan Rent Control Act, 2001 (as amended by the Rajasthan Rent Control (Amendment) Act, 2017), with dedicated Rent Tribunals having exclusive jurisdiction over eviction and rent disputes rather than the ordinary civil courts. The 2017 amendment lets landlord and tenant freely agree the tenancy period and renewal terms in the tenancy agreement itself.",
+    "jurisdiction": "Rajasthan",
+    "category": "Applicability",
+    "source": "Rajasthan Rent Control Act, 2001, as amended by the Rajasthan Rent Control (Amendment) Act, 2017"
+  },
+  {
+    "id": "RRCA_2001_RENT_INCREASE",
+    "title": "Capped Annual Rent Revision",
+    "text": "Absent a contrary agreement, rent under the Act may be increased annually by no more than about 5% on a compounding basis (roughly 7.5% for tenancies that already existed when the 2001 Act commenced), with the accumulated increase folded into the base rent every ten years. A landlord demanding a bigger jump outside an agreed schedule is going beyond what the Act permits by default.",
+    "jurisdiction": "Rajasthan",
+    "category": "Financial",
+    "source": "Rajasthan Rent Control Act, 2001, Sections 6-7 - moderate confidence, percentages consistent across secondary sources but not cross-checked against primary text"
+  },
+  {
+    "id": "RRCA_2001_SECURITY_DEPOSIT",
+    "title": "Security Deposit Capped at One Month's Rent",
+    "text": "Unless the landlord and tenant agree otherwise, the security deposit a landlord may lawfully charge is capped at one month's rent, refundable within one month after the tenant vacates and after deducting any genuine liability of the tenant. If the landlord fails to refund it in time, the tenant can apply to the Rent Authority to compel repayment.",
+    "jurisdiction": "Rajasthan",
+    "category": "Financial",
+    "source": "Rajasthan Rent Control Act, 2001, Section 22-F"
+  },
+  {
+    "id": "RRCA_2001_EVICTION_GROUNDS",
+    "title": "Restricted Grounds for Eviction",
+    "text": "A landlord may only evict a tenant covered by the Act through the Rent Tribunal and only on specified grounds, including non-payment of rent for four months, wilful damage to the premises, unauthorised structural changes, unlawful subletting, causing a public nuisance, the tenant having acquired other suitable alternative premises, or the landlord's bona fide personal need. Where eviction is granted on the personal-need ground, the landlord is barred from re-letting the premises to anyone else for three years.",
+    "jurisdiction": "Rajasthan",
+    "category": "Legal",
+    "source": "Rajasthan Rent Control Act, 2001, Section 9"
+  },
+  {
+    "id": "RRCA_2001_MAINTENANCE_ESSENTIAL_SERVICES",
+    "title": "Repair Cost-Sharing and Protection of Amenities",
+    "text": "Absent a written agreement otherwise, essential repairs costing up to 5% of the annual rent are the tenant's responsibility, while repairs above that threshold are the landlord's; if the landlord ignores a repair notice for 15 days, the tenant can get the Rent Tribunal's permission to do the repairs and set the cost off against rent. Separately, a landlord cannot discontinue or withhold amenities the tenant already enjoys - water, electricity, staircases, lifts and similar - without the Rent Tribunal's permission.",
+    "jurisdiction": "Rajasthan",
+    "category": "Maintenance",
+    "source": "Rajasthan Rent Control Act, 2001, Sections 23-24"
+  }
+]

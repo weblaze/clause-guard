@@ -1,0 +1,34 @@
+[
+  {
+    "id": "DRCA_1958_APPLICABILITY_THRESHOLD",
+    "title": "Rent Control Applicability Threshold",
+    "text": "The Delhi Rent Control Act, 1958 applies only to premises where the monthly rent does not exceed Rs. 3,500 (per the 1988 amendment). Most modern residential and commercial tenancies in Delhi, where market rents far exceed this threshold, fall entirely outside the Act's rent-control protections and are instead governed by the general terms of the lease/leave-and-license agreement and the Transfer of Property Act, 1882.",
+    "jurisdiction": "Delhi",
+    "category": "Applicability",
+    "source": "Delhi Rent Control Act, 1958 (as amended 1988)"
+  },
+  {
+    "id": "DRCA_1958_SEC14_EVICTION_BAR",
+    "title": "Restricted Grounds for Eviction",
+    "text": "Where the Delhi Rent Control Act applies, no court or Rent Controller may order a tenant's eviction except on the specific grounds set out in the proviso to Section 14(1) - such as non-payment of rent after notice, unauthorised subletting, bona fide personal need of the landlord, or the premises being unsafe and requiring repair/rebuilding. A blanket 'landlord may evict at any time for any reason' clause is not enforceable against a protected tenancy.",
+    "jurisdiction": "Delhi",
+    "category": "Legal",
+    "source": "Delhi Rent Control Act, 1958, Section 14(1)"
+  },
+  {
+    "id": "DRCA_1958_NONPAYMENT_GRACE",
+    "title": "Non-Payment Eviction Grace Period",
+    "text": "A tenant cannot be evicted for non-payment of rent unless they fail to pay the arrears within two months of receiving a written notice of demand, and provided the tenant has not already deposited the disputed rent as permitted under Section 15.",
+    "jurisdiction": "Delhi",
+    "category": "Legal",
+    "source": "Delhi Rent Control Act, 1958, Section 14(1)(a) and Section 15"
+  },
+  {
+    "id": "DRCA_1958_NEW_OWNER_BAR",
+    "title": "Five-Year Bar for New Owners",
+    "text": "If a landlord acquires a property by transfer, they cannot seek eviction on the ground of bona fide personal requirement until five years have elapsed from the date of acquisition.",
+    "jurisdiction": "Delhi",
+    "category": "Legal",
+    "source": "Delhi Rent Control Act, 1958, proviso to Section 14(1)"
+  }
+]

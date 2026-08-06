@@ -1,0 +1,42 @@
+[
+  {
+    "id": "MPACA_1961_APPLICABILITY",
+    "title": "New Construction Exemption",
+    "text": "The Madhya Pradesh Accommodation Control Act, 1961 does not apply to any accommodation for five years from the date the completion of its construction is notified to the local authority, exempting newly built premises from the Act's rent and eviction control provisions during that window. Leases for recently constructed property in Madhya Pradesh may therefore not be governed by the Act's standard-rent and eviction-ground protections.",
+    "jurisdiction": "Madhya Pradesh",
+    "category": "Applicability",
+    "source": "Madhya Pradesh Accommodation Control Act, 1961, Section 4"
+  },
+  {
+    "id": "MPACA_1961_ADVANCE_RENT",
+    "title": "No Premium; Advance Rent Capped at One Month",
+    "text": "A landlord may not claim any premium, pugree, or other consideration for granting a tenancy, and may not demand advance rent exceeding one month's rent without the Rent Controlling Authority's permission. This caps the upfront charges a landlord can lawfully impose at lease signing.",
+    "jurisdiction": "Madhya Pradesh",
+    "category": "Financial",
+    "source": "Madhya Pradesh Accommodation Control Act, 1961, Section 6(2)"
+  },
+  {
+    "id": "MPACA_1961_STANDARD_RENT",
+    "title": "Standard Rent Fixation and Limited Increases",
+    "text": "'Standard rent' under the Act is fixed with reference to a statutory base-period calculation, or by the Rent Controlling Authority on application by either party, and a landlord may only increase it by up to 10% to reflect the cost of improvements or structural alterations not already reflected in the rent. This restricts arbitrary or steep rent increases for accommodation covered by the Act.",
+    "jurisdiction": "Madhya Pradesh",
+    "category": "Financial",
+    "source": "Madhya Pradesh Accommodation Control Act, 1961, Sections 7, 8 and 10"
+  },
+  {
+    "id": "MPACA_1961_EVICTION_GROUNDS",
+    "title": "Restricted Grounds for Eviction",
+    "text": "Under the Madhya Pradesh Accommodation Control Act, 1961, a landlord may sue to evict a tenant only on specified grounds such as rent arrears unpaid within two months of notice, unlawful subletting, nuisance or use inconsistent with the purpose of letting, non-use for six months, bona fide requirement for residential or business use, or where the building requires reconstruction or is unsafe for occupation. Eviction without one of the statutory grounds in Section 12 is not permitted.",
+    "jurisdiction": "Madhya Pradesh",
+    "category": "Legal",
+    "source": "Madhya Pradesh Accommodation Control Act, 1961, Section 12(1)"
+  },
+  {
+    "id": "MPACA_1961_REPAIRS",
+    "title": "Landlord's Duty to Keep Premises in Good Repair",
+    "text": "Every landlord is bound to keep the accommodation in good and tenantable repair; if the landlord fails to do so within a reasonable time after written notice, the tenant may carry out the repairs itself and deduct the cost from rent, though the amount deducted in any year cannot exceed one-twelfth of the annual rent. A lease clause disclaiming all landlord repair responsibility may be unenforceable to this extent.",
+    "jurisdiction": "Madhya Pradesh",
+    "category": "Maintenance",
+    "source": "Madhya Pradesh Accommodation Control Act, 1961, Section 37"
+  }
+]

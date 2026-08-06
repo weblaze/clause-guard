@@ -3,7 +3,7 @@
     "id": "MTA_2021_SEC_DEPOSIT",
     "title": "Security Deposit Caps",
     "text": "The security deposit to be paid by the tenant in advance shall be as specified in the tenancy agreement, which shall not exceed: (a) two months' rent in case of residential premises; and (b) six months' rent in case of non-residential premises.",
-    "jurisdiction": "Central/Model",
+    "jurisdiction": "Central",
     "category": "Financial",
     "source": "Model Tenancy Act, 2021"
   },
@@ -11,7 +11,7 @@
     "id": "MTA_2021_MAINTENANCE_LL",
     "title": "Landlord Maintenance Obligations",
     "text": "The landlord shall be responsible for structural repairs, whitewashing of walls and painting of doors and windows, and other major repairs as specified in the tenancy agreement.",
-    "jurisdiction": "Central/Model",
+    "jurisdiction": "Central",
     "category": "Maintenance",
     "source": "Model Tenancy Act, 2021"
   },
@@ -19,7 +19,7 @@
     "id": "MTA_2021_MAINTENANCE_TN",
     "title": "Tenant Maintenance Obligations",
     "text": "The tenant shall be responsible for routine maintenance and repairs, such as drain cleaning, socket and switch repairs, kitchen fixture repairs, and replacement of glass panels.",
-    "jurisdiction": "Central/Model",
+    "jurisdiction": "Central",
     "category": "Maintenance",
     "source": "Model Tenancy Act, 2021"
   },
@@ -27,7 +27,7 @@
     "id": "MTA_2021_RENT_REVISION",
     "title": "Rent Revision Notice",
     "text": "Revision of rent between the landlord and the tenant shall be in accordance with the terms of the tenancy agreement. The landlord shall give a notice in writing to the tenant three months before the revised rent becomes due.",
-    "jurisdiction": "Central/Model",
+    "jurisdiction": "Central",
     "category": "Financial",
     "source": "Model Tenancy Act, 2021"
   },
@@ -35,7 +35,7 @@
     "id": "MTA_2021_OVERSTAY_PENALTY",
     "title": "Overstaying Penalty",
     "text": "If a tenant fails to vacate the premises after the tenancy has expired or been terminated, the tenant shall be liable to pay double the monthly rent for the first two months and four times the monthly rent thereafter.",
-    "jurisdiction": "Central/Model",
+    "jurisdiction": "Central",
     "category": "Legal",
     "source": "Model Tenancy Act, 2021"
   },
@@ -43,7 +43,7 @@
     "id": "MTA_2021_ESSENTIAL_SERVICES",
     "title": "Essential Services Protection",
     "text": "No landlord or property manager shall, either by himself or through any person, withhold any essential supply or service in the premises occupied by the tenant.",
-    "jurisdiction": "Central/Model",
+    "jurisdiction": "Central",
     "category": "Legal",
     "source": "Model Tenancy Act, 2021"
   }

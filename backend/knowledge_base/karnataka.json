@@ -1,0 +1,50 @@
+[
+  {
+    "id": "KRA_1999_REGISTRATION",
+    "title": "Mandatory Registration of Rental Agreements",
+    "text": "Section 4(3) of the Karnataka Rent Act, 1999 requires landlords and tenants to present a copy of the tenancy agreement for registration (now done digitally through the Kaveri 2.0 portal). Following the Karnataka Rent (Amendment) Act, 2025 (in force from January 2026), failure to register no longer carries imprisonment - it is a monetary penalty of up to Rs. 2,000 plus Rs. 500 for each day the default continues.",
+    "jurisdiction": "Karnataka",
+    "category": "Applicability",
+    "source": "Karnataka Rent Act, 1999 (Karnataka Act 34 of 2001), Section 4(3); penalty as amended by the Karnataka Rent (Amendment) Act, 2025, amending Section 54(i)"
+  },
+  {
+    "id": "KRA_1999_SECURITY_DEPOSIT_UNCERTAIN",
+    "title": "Security Deposit - No Confirmed Statutory Cap",
+    "text": "The Karnataka Rent Act, 1999 does not contain a clearly identified section imposing a numeric cap on residential security deposits; Section 11 restricts a different thing (payments to a tenant/sub-tenant for relinquishing a tenancy), not deposits charged by a landlord. Market practice in Bengaluru has commonly run to 6-10 months' rent as deposit.",
+    "jurisdiction": "Karnataka",
+    "category": "Financial",
+    "source": "No statutory deposit cap identified in the verified text of the Karnataka Rent Act, 1999. Widely-circulated 2025-26 claims of a new 2-month deposit cap under the Karnataka Rent (Amendment) Act, 2025 were checked directly against the amendment bill text (Karnataka LA Bill No. 67 of 2025) and found to be unsupported - that amendment only decriminalises offences and converts fines into monetary penalties (Sections 24, 53, 54, 55). Treat any '2-month cap' claim as unconfirmed."
+  },
+  {
+    "id": "KRA_1999_RENT_REVISION",
+    "title": "Limits on Rent Revision",
+    "text": "Under Section 9, rent generally cannot be revised more frequently than once every three years from the start of the tenancy or the last revision, whichever is later. Where a landlord has incurred expenditure on structural improvement, addition or alteration (not routine decoration or tenantable repairs), the landlord may increase rent by up to 10% per year of that capital cost.",
+    "jurisdiction": "Karnataka",
+    "category": "Financial",
+    "source": "Karnataka Rent Act, 1999, Section 9 - moderate confidence, reconstructed from secondary legal-summary sources, primary text could not be directly rendered for verification"
+  },
+  {
+    "id": "KRA_1999_REPAIR_SPLIT",
+    "title": "Divided Repair and Maintenance Responsibility",
+    "text": "Chapter VII (Sections 47-49) of the Act requires the landlord to keep the premises in good and tenantable repair for items falling under Part A of Schedule V, while the tenant is responsible for items under Part B. If a tenant fails, after two months' written notice, to carry out Part B repairs without which the premises are not habitable, the landlord may apply to the Rent Controller for permission to carry out those repairs itself.",
+    "jurisdiction": "Karnataka",
+    "category": "Maintenance",
+    "source": "Karnataka Rent Act, 1999, Sections 47 and 49, Schedule V"
+  },
+  {
+    "id": "KRA_1999_EVICTION_GROUNDS",
+    "title": "Restricted Grounds for Eviction",
+    "text": "Section 27 bars any court from ordering recovery of possession against a tenant except on grounds set out in Section 27(2), including non-payment of rent arrears for two months after a demand notice, continued misuse of the premises after an uncured one-month notice, unauthorised subletting, the tenant or a dependent having already acquired alternate accommodation, or the tenant having ceased employment tied to the premises, among other listed grounds.",
+    "jurisdiction": "Karnataka",
+    "category": "Legal",
+    "source": "Karnataka Rent Act, 1999, Section 27"
+  },
+  {
+    "id": "KRA_1999_NO_PREMIUM",
+    "title": "Prohibition on Premium for Sub-letting Consent",
+    "text": "Section 32(3) prohibits a landlord from claiming or receiving any premium, pugree, or other consideration in cash or kind in exchange for consenting to a tenant's sub-letting of the premises. A landlord who does so remains liable to a monetary penalty under Section 54(vi), though the 2025 amendment removed the accompanying imprisonment term.",
+    "jurisdiction": "Karnataka",
+    "category": "Legal",
+    "source": "Karnataka Rent Act, 1999, Section 32(3); penalty at Section 54(vi) as amended in 2025"
+  }
+]

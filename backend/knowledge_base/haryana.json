@@ -1,0 +1,42 @@
+[
+  {
+    "id": "HURCEA_1973_APPLICABILITY",
+    "title": "New Construction Exemption",
+    "text": "The Haryana Urban (Control of Rent and Eviction) Act, 1973 does not apply to a building for ten years from the date its construction is completed, an exemption intended to encourage new construction, and the Act also does not extend to cantonment areas. A lease for a recently constructed property in Haryana may therefore fall outside the Act's rent and eviction protections during this window.",
+    "jurisdiction": "Haryana",
+    "category": "Applicability",
+    "source": "Haryana Urban (Control of Rent and Eviction) Act, 1973, Section 1(3) (as amended by Haryana Act 16 of 1978)"
+  },
+  {
+    "id": "HURCEA_1973_ADVANCE_RENT",
+    "title": "Cap on Advance Rent; No Premium Allowed",
+    "text": "Under the Haryana Urban (Control of Rent and Eviction) Act, 1973, a landlord may not charge any premium, salami, or other lump sum in addition to rent, and may only demand advance rent of up to one month's rent. A lease clause demanding a larger upfront deposit or premium beyond one month's rent is inconsistent with the Act.",
+    "jurisdiction": "Haryana",
+    "category": "Financial",
+    "source": "Haryana Urban (Control of Rent and Eviction) Act, 1973, Section 6"
+  },
+  {
+    "id": "HURCEA_1973_RENT_FIXATION",
+    "title": "Fair Rent Determination and Increase Cap",
+    "text": "The Rent Controller may fix 'fair rent' for a building on application by either party, allowing an increase or decrease of up to 25% tied to movement in the All India Wholesale Price Index since the base agreement date; once fair rent is fixed, no further increase is permitted for five years except where the landlord has funded improvements at the tenant's request. This limits how much a landlord can lawfully raise rent on premises covered by the Act.",
+    "jurisdiction": "Haryana",
+    "category": "Financial",
+    "source": "Haryana Urban (Control of Rent and Eviction) Act, 1973, Sections 4 and 5(1)"
+  },
+  {
+    "id": "HURCEA_1973_EVICTION_GROUNDS",
+    "title": "Restricted Grounds for Eviction",
+    "text": "A landlord may evict a tenant under the Haryana Urban (Control of Rent and Eviction) Act, 1973 only on specified grounds, including non-payment of rent within 15 days of the due date, subletting or transfer without written consent, misuse causing material damage to the building, nuisance to neighbours, continuous non-occupation for four months or more, or the landlord's bona fide personal or government-service need for the premises. Eviction outside these grounds is not permitted for premises the Act covers.",
+    "jurisdiction": "Haryana",
+    "category": "Legal",
+    "source": "Haryana Urban (Control of Rent and Eviction) Act, 1973, Section 13"
+  },
+  {
+    "id": "HURCEA_1973_REPAIRS",
+    "title": "Landlord Repair and Amenity Obligations",
+    "text": "Landlords must carry out necessary (non-structural) repairs to the premises and must provide basic amenities such as water supply, electricity, and sewerage connections where available in the locality; if a landlord neglects repairs after notice, the tenant may apply to the Rent Controller to have the work done and deduct the cost from rent. A lease clause pushing all repair responsibility onto the tenant may conflict with this obligation.",
+    "jurisdiction": "Haryana",
+    "category": "Maintenance",
+    "source": "Haryana Urban (Control of Rent and Eviction) Act, 1973, Sections 9 and 12"
+  }
+]

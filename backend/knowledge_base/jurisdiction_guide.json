@@ -1,0 +1,254 @@
+[
+  {
+    "jurisdiction": "Andhra Pradesh",
+    "category": "distinct_act",
+    "act_name": "Andhra Pradesh Buildings (Lease, Rent and Eviction) Control Act, 1960 (existing tenancies) alongside the Andhra Pradesh Residential and Non-Residential Premises Tenancy Act, 2017 (new tenancies)",
+    "note": "AP runs a dual regime: the 1960 Rent Control Act continues to govern pre-existing tenancies, while the 2017 Tenancy Act (modelled on the government's earlier 2015 draft tenancy framework, predating the 2021 MTA) applies to tenancies created after its commencement.",
+    "source": "https://www.indiacode.nic.in/handle/123456789/3902"
+  },
+  {
+    "jurisdiction": "Arunachal Pradesh",
+    "category": "model_tenancy_act_adopted",
+    "act_name": "Arunachal Pradesh Tenancy Act, 2022 (Act No. 17 of 2022)",
+    "note": "Notified in the state gazette in November 2022 on the framework of the Central Model Tenancy Act (Rent Authority/Court/Tribunal structure), though 2025 local reporting says enforcement and rules remain weak, with informal agreements still common.",
+    "source": "https://arunachaltimes.in/index.php/2025/02/14/urgent-need-to-implement-tenancy-act/"
+  },
+  {
+    "jurisdiction": "Assam",
+    "category": "model_tenancy_act_adopted",
+    "act_name": "Assam Tenancy Act, 2021",
+    "note": "Assam adapted the Central Model Tenancy Act, 2021 essentially without amendment, becoming the first Indian state to adopt it; it repealed the Assam Urban Areas Rent Control Act, 1972.",
+    "source": "https://www.constructionworld.in/latest-construction-news/real-estate-news/-assam-adopts-model-tenancy-act-for-development-of-rental-housing-/29181"
+  },
+  {
+    "jurisdiction": "Bihar",
+    "category": "distinct_act",
+    "act_name": "Bihar Buildings (Lease, Rent and Eviction) Control Act, 1982",
+    "note": "Bihar's core rent-control and eviction-protection statute for private residential and commercial buildings, in force since 1983 and still the operative law; no Model Tenancy Act adoption found.",
+    "source": "https://www.latestlaws.com/bare-acts/state-acts-rules/bihar-state-laws/bihar-buildings-lease-rent-eviction-control-act-1982/"
+  },
+  {
+    "jurisdiction": "Chhattisgarh",
+    "category": "distinct_act",
+    "act_name": "Chhattisgarh Rent Control Act, 2011",
+    "note": "Enacted after Chhattisgarh's split from Madhya Pradesh to regulate rent fixation, written tenancy agreements and disputes via a Rent Controller/Tribunal; remains the governing law, no MTA adoption found.",
+    "source": "https://www.indiacode.nic.in/handle/123456789/12617"
+  },
+  {
+    "jurisdiction": "Goa",
+    "category": "distinct_act",
+    "act_name": "Goa, Daman and Diu Buildings (Lease, Rent and Eviction) Control Act, 1968",
+    "note": "Still Goa's operative rent-control law, most recently amended by the Goa Buildings (Lease, Rent and Eviction) Control (Amendment) Act, 2024; no Model Tenancy Act adoption found.",
+    "source": "https://complinity.com/legal-update/amendment-in-goa-buildings-lease-rent-and-eviction-control-act-1968-13565/"
+  },
+  {
+    "jurisdiction": "Gujarat",
+    "category": "distinct_act",
+    "act_name": "Gujarat Rents, Hotel and Lodging House Rates Control Act, 1947",
+    "note": "Gujarat has repeatedly extended (most recently through March 2026) rather than replaced this 1947 rent-control law; a proposed model-tenancy-style replacement has been discussed since 2019 but has not been enacted.",
+    "source": "https://revenuedepartment.gujarat.gov.in/downloads/acts_notification_09102020.pdf"
+  },
+  {
+    "jurisdiction": "Haryana",
+    "category": "distinct_act",
+    "act_name": "Haryana Urban (Control of Rent and Eviction) Act, 1973",
+    "note": "Remains Haryana's governing rent-control statute for urban areas (excluding cantonments and buildings under 10 years old); the state has confirmedly not adopted the Model Tenancy Act, 2021.",
+    "source": "https://www.indiacode.nic.in/handle/123456789/18272"
+  },
+  {
+    "jurisdiction": "Himachal Pradesh",
+    "category": "distinct_act",
+    "act_name": "Himachal Pradesh Urban Rent Control Act, 1987",
+    "note": "Governs rent and eviction control in HP's urban areas, in force with amendments as recent as 2012; no Model Tenancy Act adoption found.",
+    "source": "https://www.indiacode.nic.in/handle/123456789/21629"
+  },
+  {
+    "jurisdiction": "Jharkhand",
+    "category": "distinct_act",
+    "act_name": "Jharkhand Building (Lease, Rent & Eviction) Control Act, 2011",
+    "note": "Regulates letting, rent and eviction and bars premiums or advance rent beyond one month; current operative law, no Model Tenancy Act adoption found.",
+    "source": "https://www.indiacode.nic.in/handle/123456789/5362"
+  },
+  {
+    "jurisdiction": "Karnataka",
+    "category": "distinct_act",
+    "act_name": "Karnataka Rent Act, 1999",
+    "note": "Applies to residential/non-residential premises with rent up to about Rs. 3,500/month (higher-rent tenancies fall outside it); recently amended (2024-25) to decriminalise violations and raise fines, rather than being replaced by the Model Tenancy Act.",
+    "source": "https://www.indiacode.nic.in/bitstream/123456789/7810/1/34_of_2001_e.pdf"
+  },
+  {
+    "jurisdiction": "Kerala",
+    "category": "distinct_act",
+    "act_name": "Kerala Buildings (Lease and Rent Control) Act, 1965",
+    "note": "Applies only within municipal/corporation limits (panchayat-area lettings fall under the Transfer of Property Act and the rental contract instead); Kerala has explicitly not adopted the Model Tenancy Act, 2021.",
+    "source": "https://advocateanakha.com/blog/kerala-rental-agreement-tenant-eviction-laws"
+  },
+  {
+    "jurisdiction": "Madhya Pradesh",
+    "category": "distinct_act",
+    "act_name": "Madhya Pradesh Accommodation Control Act, 1961",
+    "note": "Continues to govern letting, rent-fixation and eviction disputes in MP through Rent Controlling Authorities; no repeal or Model Tenancy Act adoption found in current sources.",
+    "source": "https://www.latestlaws.com/bare-acts/state-acts-rules/madhya-pradesh-state-laws/m-p-accommodation-control-act-1961/"
+  },
+  {
+    "jurisdiction": "Maharashtra",
+    "category": "distinct_act",
+    "act_name": "Maharashtra Rent Control Act, 1999",
+    "note": "Maharashtra's principal rent-control statute (replacing the old Bombay Rents Act); remains in force, no Model Tenancy Act adoption found.",
+    "source": "https://www.indiacode.nic.in/bitstream/123456789/15817/3/eng_maharashtra_rent_control_ac.pdf"
+  },
+  {
+    "jurisdiction": "Manipur",
+    "category": "unable_to_verify",
+    "act_name": null,
+    "note": "Unable to verify. Multiple targeted searches turned up no named Manipur rent-control or tenancy statute; general sources suggest ordinary contract law/Transfer of Property Act likely applies by default, but this needs manual confirmation rather than being asserted.",
+    "source": "https://legaldesk.com/rental-agreement/rental-agreement-in-manipur"
+  },
+  {
+    "jurisdiction": "Meghalaya",
+    "category": "distinct_act",
+    "act_name": "Meghalaya Urban Areas Rent Control Act, 1972 (as amended)",
+    "note": "Governs tenant security of tenure and eviction grounds in Meghalaya's urban areas; remains the applicable law, no Model Tenancy Act adoption found.",
+    "source": "https://lawsofindia.blinkvisa.com/statelaw/7516/TheMeghalayaUrbanAreasRentControlAmendmentAct1972.html"
+  },
+  {
+    "jurisdiction": "Mizoram",
+    "category": "distinct_act",
+    "act_name": "Mizoram Urban Areas Rent Control Act, 1974",
+    "note": "Covers fair-rent fixation (revisable only every 5 years once fixed by a court) and eviction in Mizoram's urban areas; no Model Tenancy Act adoption found.",
+    "source": "https://esahayak.io/service/rent-agreement-mizoram"
+  },
+  {
+    "jurisdiction": "Nagaland",
+    "category": "no_distinct_act_general_contract_law",
+    "act_name": null,
+    "note": "Nagaland has no rent-control or tenancy statute in force - the state's own government portal only hosts a draft Model Tenancy Act that has not been enacted - so tenancies are governed primarily by the landlord-tenant contract itself.",
+    "source": "https://nagaland.gov.in/storage/PostFiles/Model-Tenancy-Act-(Draft).pdf"
+  },
+  {
+    "jurisdiction": "Odisha",
+    "category": "distinct_act",
+    "act_name": "Orissa (Odisha) House Rent Control Act, 1967",
+    "note": "Still the operative law; a Draft Odisha Urban Area Rent Control Act, 2026 (modelled on the Model Tenancy Act) has been published for consultation but is not yet enacted.",
+    "source": "https://urban.odisha.gov.in/sites/default/files/2026-06/Draft%20Odisha%20Urban%20Area%20Rent%20Control%20Act%20English.pdf"
+  },
+  {
+    "jurisdiction": "Punjab",
+    "category": "distinct_act",
+    "act_name": "Punjab Rent Act, 1995",
+    "note": "Replaced the East Punjab Urban Rent Restriction Act, 1949 and took effect in 2013; remains Punjab's governing rent-control law, no Model Tenancy Act adoption found.",
+    "source": "https://www.latestlaws.com/bare-acts/state-acts-rules/punjab-state-laws/punjab-rent-act-1995/"
+  },
+  {
+    "jurisdiction": "Rajasthan",
+    "category": "distinct_act",
+    "act_name": "Rajasthan Rent Control Act, 2001",
+    "note": "Governs tenancy agreements, rent revision and eviction via a Rent Authority; amended in 2017 to mandate written/registered agreements. No Model Tenancy Act adoption found.",
+    "source": "https://www.indiacode.nic.in/bitstream/123456789/18822/1/rajasthan_rent_control_act_2001_with_amendments.pdf"
+  },
+  {
+    "jurisdiction": "Sikkim",
+    "category": "no_distinct_act_general_contract_law",
+    "act_name": null,
+    "note": "Sikkim has no comprehensive statewide rent-control law; only the narrow, decades-old Gangtok Rent Control and Eviction Act, 1956 applies to the Gangtok Bazaar area specifically. Most tenancies are governed by ordinary contract law.",
+    "source": "http://sikkimnow.blogspot.com/2013/05/time-for-sikkim-to-have-comprehensive.html"
+  },
+  {
+    "jurisdiction": "Tamil Nadu",
+    "category": "distinct_act",
+    "act_name": "Tamil Nadu Regulation of Rights and Responsibilities of Landlords and Tenants Act, 2017",
+    "note": "Repealed the older Tamil Nadu Buildings (Lease and Rent Control) Act, 1960 and was enacted on the lines of the government's earlier (2015) draft model-tenancy framework, requiring written, registered tenancy agreements.",
+    "source": "https://www.indiacode.nic.in/handle/123456789/20507"
+  },
+  {
+    "jurisdiction": "Telangana",
+    "category": "distinct_act",
+    "act_name": "Telangana Buildings (Lease, Rent and Eviction) Control Act, 1960",
+    "note": "Carried over from undivided Andhra Pradesh via the Telangana Adaptation of Laws Order, 2016; remains in force, and the Model Tenancy Act, 2021 has explicitly not been adopted in the state.",
+    "source": "https://commoner-law.com/india/housing-rights/tenant-rights/telangana"
+  },
+  {
+    "jurisdiction": "Tripura",
+    "category": "distinct_act",
+    "act_name": "Tripura Buildings (Lease and Rent Control) Act, 1975 (Act No. 5 of 1975)",
+    "note": "Tripura's rent-control statute governing leased buildings; no Model Tenancy Act adoption found.",
+    "source": "https://thc.nic.in/Tripura%20State%20Lagislation%20Acts/Tripura%20Building%20(Lease%20And%20Rent%20Control)%20Act,%201975.pdf"
+  },
+  {
+    "jurisdiction": "Uttar Pradesh",
+    "category": "model_tenancy_act_adopted",
+    "act_name": "Uttar Pradesh Regulation of Urban Premises Tenancy Act, 2021 (Act No. 16 of 2021)",
+    "note": "Modelled explicitly on the Central Model Tenancy Act; replaced the UP Urban Buildings (Regulation of Letting, Rent and Eviction) Act, 1972 and established a Rent Authority/Tribunal system.",
+    "source": "https://prsindia.org/files/bills_acts/acts_states/uttar-pradesh/2021/Act%20No%2016%20of%202021%20UP.pdf"
+  },
+  {
+    "jurisdiction": "Uttarakhand",
+    "category": "model_tenancy_act_adopted",
+    "act_name": "Uttarakhand Tenancy Act, 2021",
+    "note": "Replaced the inherited UP Urban Buildings Act, 1972 that remained in force after Uttarakhand's 2000 bifurcation; modelled on the Central Model Tenancy Act framework with a Rent Authority and mandatory registered tenancy agreements.",
+    "source": "https://www.indiacode.nic.in/bitstream/123456789/20015/1/uk_tenancy_act,_2021_eng.pdf"
+  },
+  {
+    "jurisdiction": "West Bengal",
+    "category": "distinct_act",
+    "act_name": "West Bengal Premises Tenancy Act, 1997",
+    "note": "Applies to Kolkata, Howrah and other notified municipal areas of WB; amended multiple times between 2005 and 2010. No Model Tenancy Act adoption found.",
+    "source": "https://www.indiacode.nic.in/bitstream/123456789/14542/1/1997-37.pdf"
+  },
+  {
+    "jurisdiction": "Andaman and Nicobar Islands",
+    "category": "model_tenancy_act_adopted",
+    "act_name": "Andaman and Nicobar Islands Tenancy Regulation, 2023 (No. 2 of 2023)",
+    "note": "A Presidential Regulation under Article 240 applying the Model Tenancy Act framework to the islands; promulgated in 2023 but, per 2025-26 local reporting, still awaiting the gazette notification and rules needed for actual implementation.",
+    "source": "https://nicobartimes.com/local-news/delay-in-implementing-andaman-and-nicobar-islands-tenancy-regulation-raises-concerns-high-security-deposits-seen-as-major-hurdle-for-young-entrepreneurs/"
+  },
+  {
+    "jurisdiction": "Chandigarh",
+    "category": "distinct_act",
+    "act_name": "East Punjab Urban Rent Restriction Act, 1949 (extended to Chandigarh, amended 1982)",
+    "note": "Chandigarh follows this 1949 Punjab-origin rent law rather than the Punjab Rent Act 1995 or Delhi's 1958 Act; Model Tenancy Act not adopted.",
+    "source": "https://www.indiacode.nic.in/handle/123456789/1610"
+  },
+  {
+    "jurisdiction": "Dadra and Nagar Haveli and Daman and Diu",
+    "category": "model_tenancy_act_adopted",
+    "act_name": "Dadra and Nagar Haveli and Daman and Diu Tenancy Regulation, 2023",
+    "note": "A Presidential regulation under Article 240 applying a Model-Tenancy-Act-style framework (Rent Authority, agreed rent, dispute resolution) across the UT, superseding the older Buildings (Lease, Rent & Eviction) Control Act, 1968 as locally applied.",
+    "source": "https://teamleaseregtech.com/updates/article/28163/dadra-and-nagar-haveli-and-daman-and-diu-tenancy-regulation-2023/"
+  },
+  {
+    "jurisdiction": "Delhi",
+    "category": "distinct_act",
+    "act_name": "Delhi Rent Control Act, 1958",
+    "note": "Applies only where monthly rent is Rs. 3,500 or less; most modern tenancies fall outside it and are governed by general contract law instead.",
+    "source": "https://www.mohua.gov.in/upload/uploadfiles/files/drc_1958.pdf"
+  },
+  {
+    "jurisdiction": "Jammu and Kashmir",
+    "category": "model_tenancy_act_adopted",
+    "act_name": "Jammu and Kashmir Tenancy Act, 2025 (Act No. 4 of 2025)",
+    "note": "Passed by the J&K Legislative Assembly in October 2025 and assented to by the Lieutenant Governor on 1 November 2025; establishes a Rent Authority on Model-Tenancy-Act lines and repeals the Jammu and Kashmir (Residential and Commercial Tenancy) Act, 2012.",
+    "source": "https://prsindia.org/files/bills_acts/acts_states/jammu-and-kashmir/2025/Act4of2025JK.pdf"
+  },
+  {
+    "jurisdiction": "Ladakh",
+    "category": "model_tenancy_act_adopted",
+    "act_name": "Ladakh Tenancy Regulation, 2024",
+    "note": "Repealed the Jammu and Kashmir (Residential and Commercial Tenancy) Act, 2012 as it applied to Ladakh, introducing a Rent Authority and deposit-with-authority dispute mechanism similar to the Model Tenancy Act.",
+    "source": "https://cdnbbsr.s3waas.gov.in/s395192c98732387165bf8e396c0f2dad2/uploads/2024/09/20240927880235585.pdf"
+  },
+  {
+    "jurisdiction": "Lakshadweep",
+    "category": "model_tenancy_act_adopted",
+    "act_name": "Lakshadweep Tenancy Regulation, 2023",
+    "note": "A Presidential regulation under Article 240 adopting the Model Tenancy Act framework (Rent Authority, agreed rent, prescribed payment and notice rules) for the UT.",
+    "source": "https://www.teamleaseregtech.com/updates/article/28160/lakshadweep-tenancy-regulation-2023/"
+  },
+  {
+    "jurisdiction": "Puducherry",
+    "category": "distinct_act",
+    "act_name": "Puducherry Buildings (Lease and Rent Control) Act, 1969",
+    "note": "Regulates leasing and rent of residential/non-residential buildings in Puducherry (government premises excluded); still in force with amendments (e.g., Act 8 of 1980). No Model Tenancy Act adoption found.",
+    "source": "https://www.indiacode.nic.in/handle/123456789/6536"
+  }
+]

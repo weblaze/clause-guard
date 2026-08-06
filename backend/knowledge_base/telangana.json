@@ -1,0 +1,42 @@
+[
+  {
+    "id": "TBLRECA_1960_APPLICABILITY",
+    "title": "State Law Governs, Not the Model Tenancy Act",
+    "text": "Telangana has not adopted the central Model Tenancy Act, 2021. Residential and commercial leases in the state continue to be governed by the Telangana Buildings (Lease, Rent and Eviction) Control Act, 1960 - a state-specific successor to the erstwhile Andhra Pradesh Buildings (Lease, Rent and Eviction) Control Act, 1960, carried forward with modifications after the 2014 bifurcation of Andhra Pradesh.",
+    "jurisdiction": "Telangana",
+    "category": "Applicability",
+    "source": "Telangana Buildings (Lease, Rent and Eviction) Control Act, 1960"
+  },
+  {
+    "id": "TBLRECA_1960_ADVANCE_RENT_CAP",
+    "title": "Advance Rent Capped at One Month",
+    "text": "Under the Telangana Buildings (Lease, Rent and Eviction) Control Act, 1960, a landlord may not receive or stipulate for payment of advance rent exceeding one month's rent. A lease clause demanding a larger upfront advance as a condition of tenancy runs contrary to this provision for buildings the Act covers.",
+    "jurisdiction": "Telangana",
+    "category": "Financial",
+    "source": "Telangana Buildings (Lease, Rent and Eviction) Control Act, 1960, Section 7(1)(a) - confirmed against the identically-worded Andhra Pradesh Act text; Telangana-specific renumbering not independently re-verified, moderate confidence on exact section number"
+  },
+  {
+    "id": "TBLRECA_1960_EVICTION_GROUNDS",
+    "title": "Restricted Grounds for Eviction",
+    "text": "A landlord may seek eviction of a tenant under the Telangana Buildings (Lease, Rent and Eviction) Control Act, 1960 only through an application to the Rent Controller, and only on specified grounds such as non-payment of rent within the stipulated period, unauthorised subletting or transfer, unauthorised use or acts of waste damaging the building, nuisance to neighbouring occupants, tenant abandonment for four months or more, denial of the landlord's title, or the landlord's bona fide requirement of the building for personal occupation or business use. Eviction outside a Controller's order on one of these grounds is not permitted for tenancies the Act covers.",
+    "jurisdiction": "Telangana",
+    "category": "Legal",
+    "source": "Telangana Buildings (Lease, Rent and Eviction) Control Act, 1960, Section 10"
+  },
+  {
+    "id": "TBLRECA_1960_REPAIR_OBLIGATIONS",
+    "title": "Landlord Repair Duty With Tenant Self-Help Remedy",
+    "text": "The landlord is responsible for carrying out necessary repairs to a rented building within a reasonable time of being notified by the tenant. If the landlord fails to act, the Rent Controller may permit the tenant to carry out the repairs and deduct the cost from rent, subject to a cap of one-twelfth of the annual rent in any year.",
+    "jurisdiction": "Telangana",
+    "category": "Maintenance",
+    "source": "Telangana Buildings (Lease, Rent and Eviction) Control Act, 1960, Section 19"
+  },
+  {
+    "id": "TBLRECA_1960_ESSENTIAL_SUPPLY_PROTECTION",
+    "title": "No Cutting Off Essential Amenities",
+    "text": "A landlord may not cut off or withhold amenities such as water or electricity supplied to a tenanted building without just or sufficient cause, even during an ongoing rent dispute. A lease clause purporting to authorise the landlord to disconnect utilities to pressure a tenant is inconsistent with this protection.",
+    "jurisdiction": "Telangana",
+    "category": "Legal",
+    "source": "Telangana Buildings (Lease, Rent and Eviction) Control Act, 1960, Section 14"
+  }
+]

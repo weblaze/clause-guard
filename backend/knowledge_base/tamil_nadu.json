@@ -1,0 +1,50 @@
+[
+  {
+    "id": "TNRRRLTA_2017_APPLICABILITY",
+    "title": "Applicability and Mandatory Registration",
+    "text": "The Tamil Nadu Regulation of Rights and Responsibilities of Landlords and Tenants Act, 2017 applies to tenancy agreements across urban areas of Tamil Nadu and repealed the earlier Tamil Nadu Buildings (Lease and Rent Control) Act, 1960. Every tenancy agreement must be registered with the jurisdictional Rent Authority (via the tenancy.tn.gov.in portal); the government may by notification exclude specific areas or classes of buildings from the Act's operation.",
+    "jurisdiction": "Tamil Nadu",
+    "category": "Applicability",
+    "source": "Tamil Nadu Regulation of Rights and Responsibilities of Landlords and Tenants Act, 2017 (Chapter I - Preliminary; registration under Chapter II)"
+  },
+  {
+    "id": "TNRRRLTA_2017_SECURITY_DEPOSIT",
+    "title": "Security Deposit Default and Refund",
+    "text": "Under Section 11, the landlord and tenant may agree on the security deposit amount in the written tenancy agreement; where the agreement is silent, the deposit defaults to a maximum equivalent of three months' rent for residential premises. The deposit must be refunded to the tenant within one month of vacating the premises.",
+    "jurisdiction": "Tamil Nadu",
+    "category": "Financial",
+    "source": "Tamil Nadu Regulation of Rights and Responsibilities of Landlords and Tenants Act, 2017, Section 11"
+  },
+  {
+    "id": "TNRRRLTA_2017_RENT_REVISION_NOTICE",
+    "title": "Notice Period for Rent Revision",
+    "text": "Sections 8 and 9 govern rent revision: a landlord revising rent under an existing agreement must give the tenant two months' notice, or three months' notice where a fresh agreement is being entered into. If the tenant neither objects to nor terminates the tenancy after receiving the revised-rent notice, the revised rent is deemed accepted.",
+    "jurisdiction": "Tamil Nadu",
+    "category": "Financial",
+    "source": "Tamil Nadu Regulation of Rights and Responsibilities of Landlords and Tenants Act, 2017, Sections 8-9"
+  },
+  {
+    "id": "TNRRRLTA_2017_REPAIR_SPLIT",
+    "title": "Divided Repair and Maintenance Responsibility",
+    "text": "Section 15 splits responsibility for the upkeep of the premises between landlord and tenant according to the item lists in Schedule II Parts A and B, rather than placing all maintenance on one party by default. A landlord who tries to pass a repair cost outside the tenant's Schedule II items onto the tenant exceeds what the Act allocates to them.",
+    "jurisdiction": "Tamil Nadu",
+    "category": "Maintenance",
+    "source": "Tamil Nadu Regulation of Rights and Responsibilities of Landlords and Tenants Act, 2017, Section 15 and Schedule II"
+  },
+  {
+    "id": "TNRRRLTA_2017_EVICTION_GROUNDS",
+    "title": "Restricted Grounds for Eviction",
+    "text": "A tenant may not be evicted during the continuance of a tenancy agreement except through the Rent Court on grounds listed in Section 21(2): failure to agree on revised rent, non-payment of rent arrears for two months after a notice of demand, unauthorised parting with possession, continued misuse/nuisance/damage after notice, the landlord's bona fide need for personal use, or the need to vacate for repairs, rebuilding, or authority-mandated redevelopment. A landlord who evicts for personal use and then re-lets to a third party within three years without the Rent Court's permission is liable to a penalty of up to Rs. 10,000 under Section 22.",
+    "jurisdiction": "Tamil Nadu",
+    "category": "Legal",
+    "source": "Tamil Nadu Regulation of Rights and Responsibilities of Landlords and Tenants Act, 2017, Sections 21-22"
+  },
+  {
+    "id": "TNRRRLTA_2017_ESSENTIAL_SERVICES",
+    "title": "Prohibition on Cutting Off Essential Services",
+    "text": "Section 20 prohibits a landlord from cutting off or withholding essential supplies or services, such as water or electricity, to the tenanted premises, including as a means of pressuring a tenant to vacate. This protection applies regardless of any ongoing rent or possession dispute between the parties.",
+    "jurisdiction": "Tamil Nadu",
+    "category": "Legal",
+    "source": "Tamil Nadu Regulation of Rights and Responsibilities of Landlords and Tenants Act, 2017, Section 20"
+  }
+]

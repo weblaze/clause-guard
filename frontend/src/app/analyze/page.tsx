@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Upload, FileText, CheckCircle, AlertTriangle, ShieldCheck, ArrowLeft, Download, Loader2, Gauge, Scale } from 'lucide-react';
+import { Upload, FileText, CheckCircle, AlertTriangle, ShieldCheck, ArrowLeft, Download, Loader2, Gauge, Scale, Info } from 'lucide-react';
+import { JURISDICTIONS } from '@/lib/jurisdictions';
 
 export default function AnalyzePage() {
   const [file, setFile] = useState<File | null>(null);
@@ -10,6 +11,7 @@ export default function AnalyzePage() {
   const [analyzing, setAnalyzing] = useState(false);
   const [progress, setProgress] = useState('');
   const [report, setReport] = useState<any>(null);
+  const selectedJurisdictionInfo = JURISDICTIONS.find(j => j.value === jurisdiction);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -219,10 +221,18 @@ export default function AnalyzePage() {
           <div style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
             <label style={{ color: 'var(--text-muted)', fontSize: '0.7rem', fontWeight: '800', textTransform: 'uppercase', display: 'block', marginBottom: '0.75rem', letterSpacing: '0.05em' }}>Deployment Jurisdiction</label>
             <select className="glass" style={{ width: '100%', padding: '1.25rem', color: 'white', border: '1px solid var(--border-glass)', borderRadius: '16px', appearance: 'none', cursor: 'pointer' }} value={jurisdiction} onChange={e => setJurisdiction(e.target.value)}>
-              <option value="Central">India Central (MTA 2021)</option>
-              <option value="Delhi">Delhi Rent Act (Special)</option>
-              <option value="Maharashtra">Maharashtra Rent Control</option>
+              {JURISDICTIONS.map(j => (
+                <option key={j.value} value={j.value}>{j.label}</option>
+              ))}
             </select>
+            {selectedJurisdictionInfo && (
+              <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', marginTop: '0.85rem', padding: '0.85rem 1rem', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid var(--border-glass)' }}>
+                <Info size={15} color="var(--accent-gold)" style={{ flexShrink: 0, marginTop: '0.15rem' }} />
+                <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', lineHeight: '1.5' }}>
+                  <strong style={{ color: 'var(--text-primary, #fff)' }}>{selectedJurisdictionInfo.actName}.</strong> {selectedJurisdictionInfo.note}
+                </p>
+              </div>
+            )}
           </div>
 
           <div

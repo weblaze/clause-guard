@@ -1,0 +1,34 @@
+[
+  {
+    "id": "MRCA_1999_STANDARD_RENT",
+    "title": "Standard Rent Ceiling",
+    "text": "A landlord cannot charge or receive rent in excess of the legally permitted 'standard rent' for premises to which the Maharashtra Rent Control Act, 1999 applies.",
+    "jurisdiction": "Maharashtra",
+    "category": "Financial",
+    "source": "Maharashtra Rent Control Act, 1999, Section 7"
+  },
+  {
+    "id": "MRCA_1999_EVICTION_GROUNDS",
+    "title": "Restricted Grounds for Eviction",
+    "text": "A landlord may seek possession of premises under the Maharashtra Rent Control Act, 1999 only on specific grounds, including persistent non-payment of rent after due notice, unauthorised subletting or transfer of possession, unauthorised structural alterations, use of the premises in a manner causing nuisance or damage, bona fide personal occupation requirement, or where repairs/reconstruction necessitate vacant possession. Eviction without one of these grounds is not permitted for a tenancy the Act covers.",
+    "jurisdiction": "Maharashtra",
+    "category": "Legal",
+    "source": "Maharashtra Rent Control Act, 1999"
+  },
+  {
+    "id": "MRCA_1999_REPAIRS",
+    "title": "Landlord Repair Obligations",
+    "text": "Landlords are responsible for major/structural repairs to the premises. If a landlord fails to carry out necessary repairs after being put on written notice, the Act permits a tenant to carry out those repairs and adjust reasonable costs, subject to the Act's procedure.",
+    "jurisdiction": "Maharashtra",
+    "category": "Maintenance",
+    "source": "Maharashtra Rent Control Act, 1999"
+  },
+  {
+    "id": "MRCA_1999_DEPOSIT_PRACTICE",
+    "title": "Security Deposit Practice",
+    "text": "Unlike the Central Model Tenancy Act, the Maharashtra Rent Control Act, 1999 does not itself fix a single statutory cap on security deposits. Deposit amounts are typically governed by the specific agreement between landlord and tenant; a deposit that is a large multiple of monthly rent (e.g. beyond the 2-3 months customary in the Mumbai/Pune market) may warrant scrutiny even without a fixed statutory ceiling to cite.",
+    "jurisdiction": "Maharashtra",
+    "category": "Financial",
+    "source": "Maharashtra Rent Control Act, 1999 (no statutory deposit cap; customary market practice)"
+  }
+]

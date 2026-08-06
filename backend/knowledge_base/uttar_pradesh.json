@@ -1,0 +1,42 @@
+[
+  {
+    "id": "UPTA_2021_APPLICABILITY",
+    "title": "State-Specific Tenancy Law Modeled on Model Tenancy Act",
+    "text": "Uttar Pradesh did not simply adopt the central Model Tenancy Act, 2021 verbatim; it enacted its own parallel law, the Uttar Pradesh Regulation of Urban Premises Tenancy Act, 2021, which closely follows the Model Tenancy Act's structure (written tenancy agreements, a Rent Authority and Rent Tribunal system) with UP-specific modifications. Older tenancies may still fall under the earlier UP Urban Buildings (Regulation of Letting, Rent and Eviction) Act, 1972, depending on when and how the tenancy was created.",
+    "jurisdiction": "Uttar Pradesh",
+    "category": "Applicability",
+    "source": "Uttar Pradesh Regulation of Urban Premises Tenancy Act, 2021 (U.P. Act No. 16 of 2021)"
+  },
+  {
+    "id": "UPTA_2021_SECURITY_DEPOSIT",
+    "title": "Security Deposit Cap",
+    "text": "Under the Uttar Pradesh Regulation of Urban Premises Tenancy Act, 2021, the security deposit a landlord may collect is capped at two months' rent for residential premises and six months' rent for non-residential premises. The deposit must be refunded to the tenant on the date vacant possession is handed back, after deducting any amount the tenant genuinely owes.",
+    "jurisdiction": "Uttar Pradesh",
+    "category": "Financial",
+    "source": "Uttar Pradesh Regulation of Urban Premises Tenancy Act, 2021, Section 11"
+  },
+  {
+    "id": "UPTA_2021_RENT_INCREASE",
+    "title": "Rent Revision Formula",
+    "text": "Where the tenancy agreement does not itself fix a revision schedule, the Act contemplates annual rent increases capped at roughly 5% for residential premises and 7% for non-residential premises, with disputes referable to the Rent Authority against prevailing local market rates. A rent increase outside an agreed schedule or this statutory ceiling is not automatically enforceable against the tenant.",
+    "jurisdiction": "Uttar Pradesh",
+    "category": "Financial",
+    "source": "Uttar Pradesh Regulation of Urban Premises Tenancy Act, 2021, Sections 9-10 - moderate confidence, sourced from secondary legal analysis rather than the primary Act text"
+  },
+  {
+    "id": "UPTA_2021_EVICTION_GROUNDS",
+    "title": "Restricted Grounds for Eviction",
+    "text": "A landlord can seek eviction of a tenant under the 2021 Act only on specified grounds before the Rent Authority/Rent Tribunal, including continuous non-payment of rent for two months, unauthorised subletting or transfer of the premises, unauthorised structural alteration or illegal/nuisance use, and the landlord's bona fide requirement of the premises for personal occupation. The 2021 Act dropped the older 1972 Act's requirement that the landlord also prove comparative hardship, making the personal-occupation ground easier to invoke than under the prior law.",
+    "jurisdiction": "Uttar Pradesh",
+    "category": "Legal",
+    "source": "Uttar Pradesh Regulation of Urban Premises Tenancy Act, 2021, Section 21(2) - moderate confidence, full sub-clause list not independently verified"
+  },
+  {
+    "id": "UPTA_2021_MAINTENANCE_ESSENTIAL_SERVICES",
+    "title": "Repair Duty and Ban on Cutting Essential Services",
+    "text": "The tenant is generally responsible for day-to-day repairs; if the tenant fails to carry these out, the landlord may complete them and deduct the cost from the security deposit, payable by the tenant within one month of notice. Separately, a landlord or property manager is barred from withholding or cutting off essential supplies such as water or electricity to pressure a tenant, even over unpaid rent, and the tenant can seek an interim restoration order from the Rent Authority.",
+    "jurisdiction": "Uttar Pradesh",
+    "category": "Maintenance",
+    "source": "Uttar Pradesh Regulation of Urban Premises Tenancy Act, 2021, Sections 15 and 20"
+  }
+]

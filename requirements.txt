@@ -9,6 +9,10 @@ python-dotenv
 tiktoken
 langchain
 langchain-community
-langchain-ollama
 langchain-chroma
+langgraph
 fastembed
+groq
+rank-bm25
+sqlalchemy
+asyncpg
